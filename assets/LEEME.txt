@@ -1,0 +1,10 @@
+Carpeta para recursos estáticos: imágenes, iconos, fuentes, hojas de cálculo con datos para ejercicios, etc.
+
+Para usarla, enlaza los archivos desde index.html o css con rutas relativas, por ejemplo:
+
+  <img src="assets/logo.png" alt="">
+  background-image: url("../assets/fondo.jpg");
+
+Nota: si algún día quieres usar la página sin conexión a internet, puedes
+descargar aquí los scripts de Blockly desde el CDN y cambiar las etiquetas
+<script> de index.html para que apunten a assets/.

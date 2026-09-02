@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aprende a programar con bloques</title>
+
+<link rel="stylesheet" href="css/estilos.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/blockly/12.5.1/blockly_compressed.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/blockly/12.5.1/blocks_compressed.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/blockly/12.5.1/javascript_compressed.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/blockly/12.5.1/python_compressed.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/blockly/12.5.1/msg/es.min.js"></script>
+</head>
+<body>
+
+<header>
+  <span class="eyebrow">Primer curso · Fundamentos de programación</span>
+  <h1>Aprende a programar con bloques</h1>
+  <p>Elige un tema, después un ejemplo montado o un ejercicio para resolver tú mismo. El código se muestra en Python; el resultado se calcula al instante en el navegador.</p>
+</header>
+
+<main>
+
+  <div class="panel">
+    <p class="panel-title"><span class="num">1</span> Temario</p>
+    <div class="temario-grid" id="temario"></div>
+  </div>
+
+  <div class="panel" id="panelCapitulo" style="display:none;">
+    <p class="panel-title"><span class="num">2</span> <span id="tituloCapitulo"></span></p>
+    <p id="resumenCapitulo" style="margin:0 0 4px; font-size:15px; color:#3a4238;"></p>
+    <div class="subnav">
+      <div class="subnav-grupo">
+        <h4>📘 Ejemplos montados</h4>
+        <div class="subnav-lista" id="listaEjemplos"></div>
+      </div>
+      <div class="subnav-grupo">
+        <h4>✏️ Ejercicios para construir</h4>
+        <div class="subnav-lista" id="listaTests"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="trabajo-grid">
+
+  <div class="panel" id="panelTrabajo" style="display:none;">
+    <p class="panel-title"><span class="num">3</span> Espacio de trabajo</p>
+    <div id="infoContenido"></div>
+    <div id="blocklyDiv"></div>
+    <div class="controles-row">
+      <button class="bloque-btn principal" id="btnEjecutar">▶ Ejecutar</button>
+      <button class="bloque-btn suave" id="btnReiniciar" style="display:none;">↺ Reiniciar ejercicio</button>
+      <button class="bloque-btn suave" id="btnLimpiar">🧹 Vaciar espacio</button>
+      <span class="spacer"></span>
+      <span class="hint">Arrastra bloques desde las categorías de la izquierda.</span>
+    </div>
+  </div>
+
+  <div class="panel" id="panelResultado" style="display:none;">
+    <p class="panel-title"><span class="num">4</span> Resultado</p>
+    <div class="salida-grid">
+      <div>
+        <div class="sub-label">Consola de salida</div>
+        <div class="consola" id="consola"><span class="vacio">Pulsa «Ejecutar» para ver aquí lo que muestra el programa…</span></div>
+        <div id="veredicto"></div>
+      </div>
+      <div>
+        <div class="sub-label">Código generado (Python)</div>
+        <div class="codigo" id="codigoGenerado"># aquí aparecerá el código a medida que construyas bloques</div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+  <div class="panel panel-profesor">
+    <p class="panel-title">🛠️ Panel del profesor</p>
+    <p>Cada capítulo es un objeto dentro de <code>data/temario.json</code>: tiene un título, la lista de <code>bloques</code> disponibles (para no agobiar con opciones), sus <code>ejemplos</code> y sus <code>tests</code>. Los bloques que se montan solos se definen en <code>js/constructores.js</code>, asociados por el <code>id</code> de cada ejemplo o ejercicio.</p>
+    <p>Para crear un ejemplo nuevo sin programar: monta los bloques aquí arriba y pulsa este botón para copiar el JSON nativo de Blockly; pégalo como <code>estado</code> del ejemplo o ejercicio en <code>data/temario.json</code>.</p>
+    <button class="bloque-btn suave" id="btnExportar">📋 Exportar JSON del espacio actual</button>
+    <textarea id="cajaExportar" readonly style="display:none;" onclick="this.select()"></textarea>
+  </div>
+
+</main>
+
+<footer>Bloques estándar de Blockly + bloques propios del taller: <strong>mostrar( )</strong>, <strong>tipo de ( )</strong>, <strong>pedir( )</strong>, cadenas, listas y funciones. Estructura: Temario → Capítulo → Ejemplos / Ejercicios, con bloques filtrados por capítulo.</footer>
+
+<script src="js/bloques.js"></script>
+<script src="js/constructores.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

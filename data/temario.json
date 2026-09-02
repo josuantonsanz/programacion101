@@ -1,0 +1,360 @@
+{
+  "capitulos": [
+    {
+      "id": "conceptos-basicos",
+      "numero": 1,
+      "titulo": "Conceptos básicos",
+      "resumen": "Variables, tipos de dato, operadores aritméticos, mostrar resultados, pedir datos al usuario y convertir tipos.",
+      "bloques": ["variables_set", "variables_get", "text", "text_join", "math_number", "math_arithmetic", "pedir", "convertir", "mostrar", "tipo_de"],
+      "ejemplos": [
+        {
+          "id": "variables-crear-tipos",
+          "titulo": "Crear variables de distintos tipos",
+          "explicacion": "Creamos tres variables (texto, número y booleano) y mostramos su valor y su tipo."
+        },
+        {
+          "id": "operadores-aritmeticos",
+          "titulo": "Operadores aritméticos",
+          "explicacion": "Guardamos dos números en variables y mostramos el resultado de sumarlos, restarlos, multiplicarlos y dividirlos."
+        },
+        {
+          "id": "entrada-y-casting",
+          "titulo": "Pedir un dato y convertirlo",
+          "explicacion": "pedir() devuelve siempre texto; lo convertimos a número entero con el bloque convertir para poder operar con él. Al ejecutar se abre un cuadro para escribir el dato."
+        }
+      ],
+      "tests": [
+        {
+          "id": "variables-ficha-personal",
+          "titulo": "Tu ficha personal",
+          "enunciado": "Crea una variable con tu nombre (texto) y otra con tu edad (número). Después, muestra el TIPO de cada una: primero el de tu nombre y luego el de tu edad.",
+          "explicacion": "Da igual el nombre o la edad exactos que elijas: lo que se comprueba es que el primer \"tipo de\" mostrado sea texto y el segundo, número.",
+          "resultadoEsperado": ["texto", "número"]
+        },
+        {
+          "id": "suma-de-dos-numeros",
+          "titulo": "Suma de dos números",
+          "enunciado": "Pide dos números al usuario con pedir, conviértelos a número entero y muestra su suma.",
+          "explicacion": "El usuario escribirá 7 y 5. Recuerda que pedir devuelve texto: convierte cada entrada antes de sumar.",
+          "entradas": ["7", "5"],
+          "resultadoEsperado": ["12"]
+        }
+      ]
+    },
+    {
+      "id": "operadores-y-logica",
+      "numero": 2,
+      "titulo": "Operadores y lógica",
+      "resumen": "Funciones internas (longitud, tipo), operadores avanzados (potencia, división entera, resto) y operadores de comparación y lógicos.",
+      "bloques": ["variables_set", "variables_get", "math_number", "math_arithmetic", "operacion_extra", "math_single", "text_length", "logic_compare", "logic_operation", "logic_negate", "logic_boolean", "mostrar", "tipo_de"],
+      "ejemplos": [
+        {
+          "id": "variables-funciones-estandar",
+          "titulo": "Funciones internas",
+          "explicacion": "Usamos funciones ya incorporadas en Python (raíz cuadrada, longitud de texto) sobre el valor guardado en una variable."
+        },
+        {
+          "id": "operadores-avanzados",
+          "titulo": "Potencia, división entera y resto",
+          "explicacion": "Probamos los operadores avanzados: 3 elevado a 2, la división entera de 7 entre 2 y el resto de 7 entre 2."
+        },
+        {
+          "id": "logica-comparar-numeros",
+          "titulo": "Comparar dos números",
+          "explicacion": "Guardamos dos números y mostramos el resultado de compararlos (mayor que, igual que)."
+        },
+        {
+          "id": "operadores-logicos",
+          "titulo": "Operadores lógicos (y, o, no)",
+          "explicacion": "Combinamos condiciones con 'y' y 'o', y negamos una con 'no': ¿puede pasar al concierto? ¿puede dormir hasta tarde? ¿llueve?"
+        }
+      ],
+      "tests": [
+        {
+          "id": "longitud-de-frase",
+          "titulo": "Longitud de una frase",
+          "enunciado": "Crea una variable frase = \"Hola mundo\" y muestra su longitud (el espacio también cuenta).",
+          "explicacion": "Usa el bloque de longitud de texto sobre la variable. \"Hola mundo\" tiene 10 caracteres.",
+          "resultadoEsperado": ["10"]
+        }
+      ]
+    },
+    {
+      "id": "control-flujo",
+      "numero": 3,
+      "titulo": "Control del flujo",
+      "resumen": "Tomar decisiones con si / si-no / si-no (if/elif/else), repetir con mientras (while) y controlar los bucles con romper y continuar.",
+      "bloques": ["variables_set", "variables_get", "math_number", "math_arithmetic", "operacion_extra", "logic_compare", "logic_operation", "logic_boolean", "controls_if", "controls_whileUntil", "controls_repeat_ext", "romper", "continuar", "no_hacer_nada", "pedir", "convertir", "text", "mostrar"],
+      "ejemplos": [
+        {
+          "id": "logica-condicional",
+          "titulo": "Condicional si / si-no",
+          "explicacion": "Según la edad guardada, el programa decide qué frase mostrar."
+        },
+        {
+          "id": "clasificar-nota",
+          "titulo": "Clasificar una nota",
+          "explicacion": "Con si / si-no / si-no comprobamos varios rangos: con un 7.5 el programa debe mostrar 'Notable.'"
+        },
+        {
+          "id": "bucles-contar",
+          "titulo": "Contar del 1 al 5",
+          "explicacion": "Un bucle mientras repite mostrar y sumar 1 mientras el contador no supere 5."
+        },
+        {
+          "id": "bucles-despegue",
+          "titulo": "Cuenta atrás y despegue",
+          "explicacion": "Un bucle mientras muestra el contador y le resta 1 mientras sea mayor que 0; al salir del bucle mostramos '¡Despegue!'"
+        }
+      ],
+      "tests": [
+        {
+          "id": "logica-puede-conducir",
+          "titulo": "¿Puede conducir?",
+          "enunciado": "Ya tienes la variable edad = 16 creada. Añade un bloque \"si / si-no\": si edad es mayor o igual que 18, muestra \"Puede conducir\"; si no, muestra \"Todavía no puede conducir\".",
+          "explicacion": "Con edad = 16, la condición (edad ≥ 18) es falsa, así que el programa debe mostrar el mensaje del bloque \"si no\".",
+          "resultadoEsperado": ["Todavía no puede conducir"]
+        },
+        {
+          "id": "mayor-de-edad",
+          "titulo": "¿Mayor de edad?",
+          "enunciado": "Pide la edad al usuario con pedir, conviértela a número entero y muestra \"Mayor de edad\" si es 18 o más; si no, muestra \"Menor de edad\".",
+          "explicacion": "El usuario escribirá 20, así que la condición se cumple y debe mostrarse el primer mensaje.",
+          "entradas": ["20"],
+          "resultadoEsperado": ["Mayor de edad"]
+        },
+        {
+          "id": "bucles-cuenta-atras",
+          "titulo": "Cuenta atrás",
+          "enunciado": "Ya tienes la variable contador = 5 creada. Usa un bucle mientras para mostrar el contador y restarle 1, repitiendo mientras contador sea mayor que 0.",
+          "explicacion": "La condición se comprueba ANTES de cada vuelta: en cuanto contador llega a 0, el bucle se detiene, así que la última línea mostrada es 1.",
+          "resultadoEsperado": ["5", "4", "3", "2", "1"]
+        },
+        {
+          "id": "solo-impares",
+          "titulo": "Solo números impares",
+          "enunciado": "Crea una variable numero = 0. Con un bucle mientras que se repita mientras numero sea menor que 10, suma 1 a numero y, si el resto de dividirlo entre 2 es 0, usa continuar para saltar la vuelta. Después muestra numero.",
+          "explicacion": "Los pares se saltan con continuar, así que solo se muestran los impares: 1, 3, 5, 7 y 9.",
+          "resultadoEsperado": ["1", "3", "5", "7", "9"]
+        }
+      ]
+    },
+    {
+      "id": "cadenas",
+      "numero": 4,
+      "titulo": "Cadenas",
+      "resumen": "Trabajar con texto: acceder a caracteres, extraer partes, transformar mayúsculas y minúsculas, buscar, reemplazar y comprobar contenidos.",
+      "bloques": ["variables_set", "variables_get", "text", "text_join", "text_length", "text_repetir", "text_char", "text_slice", "text_transformar", "text_buscar", "text_reemplazar", "text_contiene", "text_tiene_mayuscula", "text_tiene_numero", "math_number", "pedir", "convertir", "mostrar", "tipo_de"],
+      "ejemplos": [
+        {
+          "id": "cadenas-indexacion",
+          "titulo": "Acceder a caracteres (índices)",
+          "explicacion": "Cada carácter tiene una posición: la primera es la 0. Con índices negativos contamos desde el final (-1 es el último). Mostramos la P (posición 0), la H (posición 3) y la N (posición -1) de 'PYTHON'."
+        },
+        {
+          "id": "cadenas-slicing",
+          "titulo": "Extraer partes de un texto",
+          "explicacion": "Con palabra[inicio:hasta] extraemos un trozo: PYT (de 0 a 3), THO (de 2 a 5) y HON (desde la 3 hasta el final). El carácter 'hasta' NO se incluye."
+        },
+        {
+          "id": "cadenas-transformar",
+          "titulo": "Mayúsculas, minúsculas y espacios",
+          "explicacion": "Los métodos upper(), capitalize(), title() y strip() transforman el texto: 'josu' → 'JOSU' y 'Josu'; el título sale con mayúscula inicial en cada palabra y strip() elimina los espacios de alrededor."
+        },
+        {
+          "id": "cadenas-buscar-reemplazar",
+          "titulo": "Buscar y reemplazar",
+          "explicacion": "find() devuelve la posición de la primera aparición: el @ de 'correo@dominio.com' está en la posición 6. replace() cambia todas las apariciones: 'aburrido' → 'divertido'."
+        },
+        {
+          "id": "cadenas-pertenencia",
+          "titulo": "¿Está dentro? (operador in)",
+          "explicacion": "El operador in comprueba si un texto está dentro de otro: 'zorro' está en 'El zorro salta' (True) pero 'gato' no (False)."
+        },
+        {
+          "id": "cadenas-nueva-cadena",
+          "titulo": "Las cadenas no se modifican",
+          "explicacion": "Las cadenas son inmutables: no se pueden cambiar, solo crear otras nuevas. Cogemos la 'j' y el trozo 'osu' de 'josue' y los unimos para formar 'josu'; la variable original sigue intacta."
+        }
+      ],
+      "tests": [
+        {
+          "id": "cadenas-primera-ultima",
+          "titulo": "Primera y última letra",
+          "enunciado": "Pide una palabra con pedir y muestra su primera letra (posición 0) y después su última letra (posición -1).",
+          "explicacion": "El usuario escribirá 'Python'. Usa el bloque carácter dos veces: carácter 0 de la palabra y carácter -1 de la palabra.",
+          "entradas": ["Python"],
+          "resultadoEsperado": ["P", "n"]
+        },
+        {
+          "id": "cadenas-email",
+          "titulo": "Partes de un correo",
+          "enunciado": "Pide un correo electrónico con pedir. Muestra la parte que hay antes de la @ (desde el principio hasta la posición de la @) y la parte que hay después (desde la posición siguiente a la @ hasta el final).",
+          "explicacion": "El usuario escribirá 'nombre.apellido@gmail.com'. Busca la posición de '@' con el bloque posición de: da 15. El primer trozo es texto[0:15] y el segundo texto[16:].",
+          "entradas": ["nombre.apellido@gmail.com"],
+          "resultadoEsperado": ["nombre.apellido", "gmail.com"]
+        },
+        {
+          "id": "cadenas-censor",
+          "titulo": "Censurar una palabra",
+          "enunciado": "Pide una frase y una palabra con pedir. Muestra la frase con todas las apariciones de esa palabra reemplazadas por '[CENSURADO]'.",
+          "explicacion": "El usuario escribirá la frase 'Python es aburrido' y después la palabra 'aburrido'. Usa el bloque reemplazar sobre la frase.",
+          "entradas": ["Python es aburrido", "aburrido"],
+          "resultadoEsperado": ["Python es [CENSURADO]"]
+        },
+        {
+          "id": "cadenas-formateador",
+          "titulo": "Formatear un nombre",
+          "enunciado": "Pide un nombre completo con pedir (puede llevar espacios alrededor y minúsculas). Muestra '¡Bienvenido, ' + el nombre sin espacios y con cada palabra en mayúscula inicial + '!'",
+          "explicacion": "El usuario escribirá '  ana martinez  '. Quita los espacios con sin espacios alrededor, pon en formato título y únelo con el saludo usando el bloque unir.",
+          "entradas": ["  ana martinez  "],
+          "resultadoEsperado": ["¡Bienvenido, Ana Martinez!"]
+        }
+      ]
+    },
+    {
+      "id": "for-listas",
+      "numero": 5,
+      "titulo": "For y listas",
+      "resumen": "Repetir con para cada (for) y rango, y guardar colecciones de datos en listas: crearlas, acceder, añadir, quitar, ordenar y recorrer.",
+      "bloques": ["variables_set", "variables_get", "text", "text_join", "math_number", "math_arithmetic", "math_round", "math_random_int", "logic_compare", "logic_boolean", "controls_if", "controls_whileUntil", "controls_repeat_ext", "para_cada", "rango", "lista", "lista_vacia", "lista_longitud", "lista_elemento", "lista_parte", "lista_anadir", "lista_quitar", "lista_poner", "lista_ordenar", "lista_invertir", "lista_copiar", "lista_contiene", "pedir", "convertir", "mostrar", "tipo_de"],
+      "ejemplos": [
+        {
+          "id": "bucles-range",
+          "titulo": "El bucle para cada con rango",
+          "explicacion": "range(3) genera 0, 1, 2; range(1, 6) genera 1 a 5; range(0, 11, 2) genera los pares del 0 al 10. El bloque para cada repite el cuerpo una vez por cada valor."
+        },
+        {
+          "id": "bucles-repetir",
+          "titulo": "Repetir N veces",
+          "explicacion": "El bloque repetir N veces hace exactamente eso: muestra '¡Hola!' tres veces. Es la forma más corta de repetir cuando no necesitamos un contador."
+        },
+        {
+          "id": "listas-crear-acceder",
+          "titulo": "Crear y acceder a listas",
+          "explicacion": "Guardamos tres frutas en una lista y accedemos a ellas por posición (0 = primera, -1 = última). La longitud de la lista es 3."
+        },
+        {
+          "id": "listas-metodos",
+          "titulo": "Añadir, ordenar y quitar",
+          "explicacion": "Creamos la lista con Leche y Pan, añadimos Manzanas al final, la ordenamos (alfabéticamente) y quitamos el último elemento con quitar, que además lo devuelve."
+        },
+        {
+          "id": "listas-copiar",
+          "titulo": "Copiar listas con cuidado",
+          "explicacion": "Si hacemos listaMal = listaOriginal, las dos variables apuntan a la MISMA lista: al cambiar la primera letra por Z, la original también cambia. Con el bloque copia de creamos una copia independiente: cambiar la copia no afecta a la original."
+        },
+        {
+          "id": "bucles-listas-tareas",
+          "titulo": "Recorrer listas",
+          "explicacion": "Primero recorremos la lista directamente con para cada (tarea). Después recorremos por índice: para cada i desde 0 hasta longitud, mostramos el puesto (i+1) y la tarea de esa posición."
+        },
+        {
+          "id": "listas-sorteo",
+          "titulo": "Sorteo con números aleatorios",
+          "explicacion": "Elegimos una posición al azar entre 0 y longitud-1 con el bloque número aleatorio entre y mostramos el participante de esa posición. ¡Ejecuta varias veces!"
+        }
+      ],
+      "tests": [
+        {
+          "id": "bucles-contar-5",
+          "titulo": "Contar del 1 al 5",
+          "enunciado": "Usa el bloque para cada con rango(1, 6) para mostrar los números del 1 al 5 (uno en cada línea).",
+          "explicacion": "range(1, 6) genera 1, 2, 3, 4, 5: el final no se incluye. Dentro del bucle solo hace falta mostrar la variable del bucle.",
+          "resultadoEsperado": ["1", "2", "3", "4", "5"]
+        },
+        {
+          "id": "bucles-pares",
+          "titulo": "Pares del 0 al 10",
+          "enunciado": "Usa para cada con rango(0, 11, 2) para mostrar los números pares del 0 al 10, uno en cada línea.",
+          "explicacion": "El tercer número de rango es el paso: 0, 2, 4, 6, 8 y 10.",
+          "resultadoEsperado": ["0", "2", "4", "6", "8", "10"]
+        },
+        {
+          "id": "lista-compra",
+          "titulo": "Lista de la compra",
+          "enunciado": "Crea una lista vacía. Pide productos con pedir y añádelos a la lista con añadir a, mientras el producto no sea 'FIN'. Cuando el usuario escriba FIN, ordena la lista y muestra cuántos productos hay (longitud) y después cada producto con un para cada.",
+          "explicacion": "El usuario escribirá Leche, Pan, Manzanas y FIN. La lista ordenada es ['Leche', 'Manzanas', 'Pan']. Hay 3 productos, así que se muestran: 3, Leche, Manzanas y Pan.",
+          "entradas": ["Leche", "Pan", "Manzanas", "FIN"],
+          "resultadoEsperado": ["3", "Leche", "Manzanas", "Pan"]
+        },
+        {
+          "id": "notas-analisis",
+          "titulo": "Análisis de notas",
+          "enunciado": "Ya tienes la lista notas creada. Recórrela y cuenta cuántas notas son aprobados (5 o más) y cuántas suspensos (menores que 5); suma todas las notas. Muestra en orden: número de aprobados, número de suspensos, la suma y la media redondeada (suma / longitud con redondear).",
+          "explicacion": "notas = [4, 8, 7, 9, 3, 6, 5, 10, 2]. Hay 6 aprobados (8, 7, 9, 6, 5, 10) y 3 suspensos (4, 3, 2). La suma es 54 y la media 54/9 = 6.",
+          "resultadoEsperado": ["6", "3", "54", "6"]
+        },
+        {
+          "id": "inversor-listas",
+          "titulo": "Invertir una lista",
+          "enunciado": "Ya tienes miLista y listaInvertida (vacía) creadas. Recorre los índices de miLista desde el último hasta el primero (rango con inicio longitud-1, final -1 y paso -1) y añade cada elemento a listaInvertida con añadir a. Después muestra miLista y listaInvertida.",
+          "explicacion": "rango(longitud-1, -1, -1) genera 5, 4, 3, 2, 1, 0. Al recorrer miLista al revés y añadir a la lista nueva, queda invertida: ['c', 'b', 'a', 3, 2, 1].",
+          "resultadoEsperado": ["[1, 2, 3, 'a', 'b', 'c']", "['c', 'b', 'a', 3, 2, 1]"]
+        }
+      ]
+    },
+    {
+      "id": "funciones",
+      "numero": 6,
+      "titulo": "Funciones",
+      "resumen": "Crear funciones propias para reutilizar código: definirlas con parámetros, llamarlas, devolver valores con return y entender el ámbito de las variables.",
+      "bloques": ["variables_set", "variables_get", "text", "text_join", "text_length", "text_tiene_mayuscula", "text_tiene_numero", "math_number", "math_arithmetic", "operacion_extra", "logic_compare", "logic_operation", "logic_boolean", "controls_if", "controls_whileUntil", "funcion_definir", "funcion_llamar", "devolver", "pedir", "convertir", "mostrar", "tipo_de"],
+      "ejemplos": [
+        {
+          "id": "funciones-saludar",
+          "titulo": "Definir y llamar una función",
+          "explicacion": "Definimos la función saludar() que muestra un saludo, y luego la llamamos dos veces: cada llamada ejecuta su cuerpo. El programa principal va después de la definición."
+        },
+        {
+          "id": "funciones-parametros",
+          "titulo": "Funciones con parámetros",
+          "explicacion": "saludarA(nombre) recibe un parámetro y lo usa dentro. Llamamos a la función con 'Ana' y con 'Marcos': el mismo código, distinto resultado."
+        },
+        {
+          "id": "funciones-return",
+          "titulo": "Devolver valores con return",
+          "explicacion": "sumar(a, b) calcula y DEVUELVE el resultado con devolver, así que podemos guardarlo en una variable o usarlo en una operación. Una función sin devolver devuelve None."
+        },
+        {
+          "id": "funciones-ambito",
+          "titulo": "Ámbito de las variables",
+          "explicacion": "La variable huevos existe fuera (vale 12) y dentro de cocinar() creamos OTRA huevos local (vale 2). Dentro de la función se ve la local; fuera, la global."
+        }
+      ],
+      "tests": [
+        {
+          "id": "funciones-validar-edad",
+          "titulo": "¿Puede pasar?",
+          "enunciado": "Define la función es_mayor_de_edad(edad) que devuelva True si edad es 18 o más y False si no. Después pide la edad, conviértela a número entero y muestra 'Puede pasar' si es_mayor_de_edad(edad) es verdadero.",
+          "explicacion": "El usuario escribirá 20, así que es_mayor_de_edad(20) devuelve True y se muestra 'Puede pasar'. La llamada a la función va conectada como condición del bloque si.",
+          "entradas": ["20"],
+          "resultadoEsperado": ["Puede pasar"]
+        },
+        {
+          "id": "funciones-calculadora",
+          "titulo": "Mini calculadora",
+          "enunciado": "Define cuatro funciones: sumar(a, b), restar(a, b), multiplicar(a, b) y dividir(a, b), cada una devolviendo su operación. Después pide dos números, conviértelos a entero y muestra el resultado de sumarlos, restarlos, multiplicarlos y dividirlos.",
+          "explicacion": "El usuario escribirá 7 y 5: sumar da 12, restar 2, multiplicar 35 y dividir 1.4. Para dividir usa el bloque de división normal (/).",
+          "entradas": ["7", "5"],
+          "resultadoEsperado": ["12", "2", "35", "1.4"]
+        },
+        {
+          "id": "funciones-collatz",
+          "titulo": "Conjetura de Collatz",
+          "enunciado": "Ya tienes numero = 6. Define collatz(n): muestra n; si el resto de n entre 2 es 0, devuelve n // 2; si no, devuelve n * 3 + 1. Después repite con un bucle mientras (mientras numero sea distinto de 1) asignando a numero el resultado de collatz(numero). Al salir del bucle, muestra numero.",
+          "explicacion": "Desde el 6 la secuencia es 6 → 3 → 10 → 5 → 16 → 8 → 4 → 2 → 1. La función muestra cada valor al entrar y el programa final muestra el último 1.",
+          "resultadoEsperado": ["6", "3", "10", "5", "16", "8", "4", "2", "1"]
+        },
+        {
+          "id": "funciones-password",
+          "titulo": "Fortaleza de contraseña",
+          "enunciado": "Ya tienes tres funciones: verificarLongitud(pwd), verificarMayuscula(pwd) y verificarNumero(pwd), que devuelven True o False. Define analizarFortaleza(pwd) que devuelva 'Contraseña Fuerte' si se cumplen las tres a la vez (combínalas con bloques Y) y 'Contraseña Débil' si no. Después pide una contraseña y muestra el resultado de analizarFortaleza(contraseña) y también de analizarFortaleza('abc').",
+          "explicacion": "El usuario escribirá 'Programacion3': tiene 13 caracteres, mayúscula y número, así que es fuerte. 'abc' falla las tres comprobaciones y es débil.",
+          "entradas": ["Programacion3"],
+          "resultadoEsperado": ["Contraseña Fuerte", "Contraseña Débil"]
+        }
+      ]
+    }
+  ]
+}
