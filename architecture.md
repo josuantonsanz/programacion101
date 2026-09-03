@@ -8,15 +8,20 @@ añadir contenido), ver [README.md](README.md).
 ## 1. Visión general
 
 Aplicación web **100 % frontend, sin servidor propio**: un único `index.html`
-que carga CSS y JavaScript en local y los datos del temario desde
+que carga CSS y JavaScript en local y el temario compilado desde
 `data/temario.json`. Toda la lógica se ejecuta en el navegador del alumno.
+
+La fuente de autoría es `data/curso/*.yaml`: hay un YAML por capítulo. El
+compilador Python `tools/compilar_contenido.py` los valida y transforma en el
+JSON estático que consume el navegador. Por tanto, la aplicación web no carga
+ni interpreta YAML.
 
 El flujo pedagógico es:
 
 ```
 Temario (capítulos)
    └─► Capítulo (filtra bloques disponibles)
-         ├─► Ejemplo montado  → se construye solo (estado o función)
+         ├─► Ejemplo montado  → estado Blockly generado desde YAML
          └─► Ejercicio (test) → el alumno construye; la app autocorrige
 ```
 
@@ -30,16 +35,19 @@ ejercicio define (opcionalmente) cómo se monta el espacio de trabajo inicial.
 | Estructura | HTML5 + CSS3 (variables CSS, grid/flex) |
 | Lógica | JavaScript (ES2017+) sin frameworks ni bundlers |
 | Editor de bloques | [Blockly](https://developers.google.com/blockly) `12.5.1` desde CDN (cdnjs) |
-| Datos | JSON estático (`data/temario.json`), cargado con `fetch()` |
+| Datos en ejecución | JSON estático generado (`data/temario.json`), cargado con `fetch()` |
+| Autoría de contenido | YAML por capítulo + Python 3 + `PyYAML>=6.0,<7` |
+| Compilación | `tools/compilar_contenido.py` convierte y valida YAML → JSON/estado Blockly |
 | Ejecución | El código de bloques se traduce a JavaScript y se evalúa con `new Function` |
 
 ### ¿Por qué fetch + servidor local?
 
 El temario se lee con `fetch('data/temario.json')`. Los navegadores bloquean
 `fetch` sobre `file://` (política de origen), por eso la página debe servirse
-con un servidor estático (`python -m http.server 8000`). A cambio, el contenido
-queda en un JSON puro, editable sin tocar código. `app.js` muestra un aviso
-explicativo si la carga falla.
+con un servidor estático (`python -m http.server 8000`). A cambio, en
+producción el contenido queda en un JSON estático. Para editarlo se modifica
+el YAML y se regenera ese artefacto antes de abrir o publicar el sitio.
+`app.js` muestra un aviso explicativo si la carga falla.
 
 ## 3. Estructura de directorios
 
@@ -51,10 +59,17 @@ bloques-programacion/
 │   └── estilos.css       → diseño de pizarra anterior, conservado como referencia
 ├── js/
 │   ├── bloques.js        → bloques personalizados, registro de bloques, toolbox
-│   ├── constructores.js  → helpers de montaje + CONSTRUCTORES (id → función)
+│   ├── constructores.js  → constructores históricos, conservados como referencia
 │   └── app.js            → carga de datos, estado, navegación, ejecución, verificación
 ├── data/
-│   └── temario.json      → datos puros: capítulos, ejemplos, tests, resultadoEsperado
+│   ├── curso/            → fuentes YAML: un archivo editable por capítulo
+│   │   ├── 01-conceptos-basicos.yaml
+│   │   └── …
+│   └── temario.json      → artefacto generado; único dato que carga la web
+├── tools/
+│   └── compilar_contenido.py → compilador y validador YAML → JSON Blockly
+├── requirements.txt      → dependencia de compilación: PyYAML
+├── PROTOCOLO_CONTENIDO_YAML.md → especificación completa del DSL YAML
 └── assets/               → recursos estáticos (imágenes, iconos, scripts offline)
 ```
 
@@ -62,8 +77,8 @@ Orden de carga en `index.html` (importante, hay dependencias):
 
 1. Scripts de Blockly desde CDN (core, bloques, generadores JS y Python, español).
 2. `js/bloques.js` — define bloques y la toolbox (usa las APIs de Blockly).
-3. `js/constructores.js` — helpers y `CONSTRUCTORES` (usa `workspace` global).
-4. `js/app.js` — inyecta Blockly, carga el JSON y arranca (usa todo lo anterior).
+3. `js/constructores.js` — constructores heredados; se conserva por compatibilidad y referencia histórica.
+4. `js/app.js` — inyecta Blockly, carga el JSON generado y arranca (usa todo lo anterior).
 
 ## 4. Componentes
 
@@ -111,9 +126,13 @@ Tres responsabilidades:
    el resto, categorías estáticas con los bloques concretos. La lista de
    categorías (y su orden) está en `ORDEN_CATEGORIAS`.
 
-### 4.2 `js/constructores.js` — montaje programático de bloques
+### 4.2 `js/constructores.js` — montaje programático histórico
 
-Parte **comportamiento** del temario: el JSON no puede contener funciones.
+Este archivo contiene los *helpers* y el mapa `CONSTRUCTORES` de la arquitectura
+anterior, en la que los identificadores del JSON se asociaban a funciones de
+JavaScript. Se mantiene sin cambios como referencia y por compatibilidad del
+cargador, pero el contenido actual no depende de él: los YAML se compilan a
+estados nativos de Blockly y `app.js` prioriza el campo `estado`.
 
 - **Helpers** (`crear`, `variable`, `bloqueSet`, `bloqueGet`, `bloqueTexto`,
   `bloqueNum`, `bloqueBool`, `bloqueMostrar`, `bloqueTipoDe`,
@@ -130,15 +149,43 @@ Parte **comportamiento** del temario: el JSON no puede contener funciones.
   `bloqueDevolver`, `bloqueSi`, `bloqueRandomInt`, `encadenar`): API
   declarativa de alto nivel para construir bloques y conectarlos (crean
   variables en el mapa de variables de Blockly cuando hace falta).
-- **`CONSTRUCTORES`**: mapa `id → función de montaje`. Los `id` coinciden con
-  los de `data/temario.json`.
+- **`CONSTRUCTORES`**: mapa histórico `id → función de montaje`. Si un JSON
+  heredado no contiene `estado`, el cargador aún puede asociar por `id` una de
+  estas funciones.
 
 > Convención: los ids usan `kebab-case` con prefijo del capítulo
 > (`logica-puede-conducir`, `bucles-cuenta-atras`…).
 
-### 4.3 `data/temario.json` — los datos
+### 4.3 Contenido: YAML fuente y JSON compilado
 
-Parte **datos** del temario. Esquema:
+`data/curso/` es la **fuente de verdad** del contenido. Cada archivo `*.yaml`
+contiene exactamente un objeto raíz `capitulo` con sus metadatos, ejemplos y
+ejercicios. Los programas declarativos se escriben en el DSL YAML documentado
+por completo en [PROTOCOLO_CONTENIDO_YAML.md](PROTOCOLO_CONTENIDO_YAML.md).
+
+`tools/compilar_contenido.py` lee los YAML de una carpeta en orden alfabético,
+valida estructura, identificadores, operadores y aridades, y escribe
+`data/temario.json`. Para cada contenido con `programa`, genera un `estado`
+nativo de Blockly (variables, bloques, conexiones, mutators y coordenadas).
+Un contenido sin `programa` no recibe estado y comienza con el lienzo vacío.
+
+La compilación habitual, desde la raíz, es:
+
+```powershell
+py -m pip install -r requirements.txt   # solo la primera vez
+py tools/compilar_contenido.py
+```
+
+El compilador también acepta una carpeta, uno o varios YAML y `-o/--destino`;
+conserva la interfaz heredada de dos argumentos posicionales. `temario.json` es
+un **artefacto generado**: no se edita manualmente y debe regenerarse tras
+cambiar los YAML.
+
+La aplicación carga exclusivamente ese archivo generado mediante
+`fetch('data/temario.json')`; no se han modificado `js/app.js`, `js/bloques.js`
+ni se han añadido tipos de bloque para esta migración.
+
+El esquema del JSON resultante es:
 
 ```jsonc
 {
@@ -151,10 +198,10 @@ Parte **datos** del temario. Esquema:
       "bloques": ["tipo_bloque"],// filtro de la toolbox
       "ejemplos": [
         {
-          "id": "string",        // clave de CONSTRUCTORES si aplica
+          "id": "string",        // único en todo el temario
           "titulo": "string",
           "explicacion": "string",
-          "estado": { }          // opcional: JSON nativo exportado por Blockly
+          "estado": { }          // generado desde programa YAML si existe
         }
       ],
       "tests": [
@@ -173,13 +220,13 @@ Parte **datos** del temario. Esquema:
 }
 ```
 
-**Decisión de diseño — datos vs. comportamiento:** el JSON contiene solo datos
-serializables. Las funciones de montaje viven en `CONSTRUCTORES` y se
-"enganchan" en tiempo de carga: `app.js` hace `ej.construir = CONSTRUCTORES[ej.id]`.
-Existe además el campo `estado`: JSON nativo de Blockly (el que exporta el
-panel del profesor), que permite crear contenidos montados **sin escribir
-JavaScript**. En `seleccionarContenido`, `estado` tiene prioridad sobre
-`construir`.
+**Decisión de diseño — contenido declarativo:** el YAML describe instancias de
+bloques ya registrados, no definiciones de bloques ni código JavaScript. El
+compilador transforma el DSL en datos serializables que Blockly puede cargar
+con `Blockly.serialization.workspaces.load`. Así, ejemplos y semillas se
+mantienen sin editar `js/constructores.js`. Si coexistiera contenido heredado,
+`app.js` conserva su asociación a `CONSTRUCTORES`, pero en
+`seleccionarContenido` `estado` tiene prioridad sobre `construir`.
 
 ### 4.4 `js/app.js` — aplicación
 
@@ -195,10 +242,12 @@ compararlas después. `entrada(mensaje)` es el `input()` simulado: en los
 tests consume la cola del campo `entradas` del ejercicio (determinista); en
 ejecución normal abre un diálogo del navegador.
 
-**Carga de datos** (`cargarTemario`): `fetch` del JSON, guarda en `TEMARIO` y
-engancha los constructores por id. Con manejo de error: si el `fetch` falla
-(por ejemplo, `file://`), pinta un aviso con las instrucciones del servidor
-local y se detiene el arranque.
+**Carga de datos** (`cargarTemario`): hace `fetch` exclusivamente de
+`data/temario.json`, guarda `datos.capitulos` en `TEMARIO` y, solo por
+compatibilidad con contenido heredado, asocia constructores existentes por id.
+Los contenidos generados desde YAML usan `estado` y no requieren dicha
+asociación. Si el `fetch` falla (por ejemplo, con `file://`), pinta un aviso
+con las instrucciones del servidor local y se detiene el arranque.
 
 **Espacio de trabajo** (`Blockly.inject`): toolbox inicial mínima, rejilla con
 snap, zoom por rueda, papelera. Se reajusta al redimensionar la ventana.
@@ -241,7 +290,15 @@ exacto** (case y espacios incluidos). Si coinciden → veredicto ✅; si no → 
 **Panel del profesor**: `Blockly.serialization.workspaces.save(workspace)` y
 volcado del JSON a un textarea para copiar.
 
-## 5. Flujo de arranque
+## 5. Flujo de contenido y arranque
+
+La generación del contenido es un paso previo e independiente del navegador:
+
+```
+data/curso/*.yaml → tools/compilar_contenido.py → data/temario.json
+```
+
+Después, el arranque de la aplicación es:
 
 ```
 index.html carga scripts (Blockly CDN → bloques.js → constructores.js → app.js)
@@ -250,10 +307,10 @@ index.html carga scripts (Blockly CDN → bloques.js → constructores.js → ap
 app.js: Blockly.inject(...)                     ── crea el workspace
         │
         ▼
-iniciar(): fetch('data/temario.json')           ── carga datos
+iniciar(): fetch('data/temario.json')           ── carga el artefacto generado
         │  └─ error → aviso de servidor local y fin
         ▼
-enganchar CONSTRUCTORES por id                  ── datos + comportamiento
+asociar CONSTRUCTORES heredados si existen      ── ruta de compatibilidad
         │
         ▼
 renderTemario() → seleccionarCapitulo(primero)  ── pinta UI
@@ -261,7 +318,7 @@ renderTemario() → seleccionarCapitulo(primero)  ── pinta UI
         ▼
 seleccionarContenido('ejemplo', 0)
    ├─ updateToolbox(bloques del capítulo)
-   ├─ clear() + estado | construir()           ── monta el ejemplo
+   ├─ clear() + estado | construir()           ── `estado` YAML tiene prioridad
    └─ actualizarCodigo()                       ── primer Python visible
 ```
 
@@ -290,9 +347,9 @@ Casos especiales del puente Python ↔ JavaScript:
 - `lista` usa un **mutator** (`Blockly.icons.MutatorIcon`) como el
   `lists_create_with` de Blockly: `saveExtraState`/`loadExtraState` guardan el
   nº de elementos y `decompose`/`compose`/`saveConnections` lo editan.
-- `text_join` en Python genera `''.join([...])`, que falla con números: en los
-  constructores los números se envuelven con `convertir('TEXTO', ...)` antes
-  de unirlos (genera `str(...)`).
+- `text_join` en Python genera `''.join([...])`, que falla con números: los
+  contenidos deben envolverlos con `convertir` a texto antes de unirlos
+  (genera `str(...)`).
 - `mostrar` formatea la salida como Python (`formatearValor`): `true/false` →
   `True/False`, arrays → `['a', 1]`, `null` → `None`.
 
@@ -304,9 +361,10 @@ bibliotecas ni sintaxis avanzada de Python.
 
 | Quiero… | Dónde toco |
 |---------|------------|
-| Añadir un capítulo, ejemplo o ejercicio | `data/temario.json` (ver README) |
-| Que un contenido salga montado sin programar | Montar bloques → exportar JSON → campo `estado` |
-| Montaje programático de bloques | `js/constructores.js` → nueva entrada en `CONSTRUCTORES` |
+| Añadir un capítulo, ejemplo o ejercicio | Crear o editar `data/curso/*.yaml` y compilar (ver README y protocolo) |
+| Consultar el DSL, las validaciones y los comandos | `PROTOCOLO_CONTENIDO_YAML.md` |
+| Que un contenido salga montado | Declarar `programa` en YAML; el compilador genera `estado` |
+| Mantener contenido heredado | `js/constructores.js` → entrada existente en `CONSTRUCTORES` |
 | Un tipo de bloque nuevo | `js/bloques.js`: bloque + generadores + `REGISTRO_BLOQUES` |
 | Cambiar el orden/categorías de la toolbox | `ORDEN_CATEGORIAS` / `REGISTRO_BLOQUES` en `js/bloques.js` |
 | Nuevo idioma de código (p. ej. bloques → Java) | Cargar `java_compressed.min.js` y generar con `Blockly.Java` |
@@ -322,6 +380,10 @@ bibliotecas ni sintaxis avanzada de Python.
   eficiencia ni estilo.
 - `new Function` ejecuta el código generado por los bloques: es un sandbox
   ligero (sin DOM), suficiente para el aula, no para código arbitrario.
+- La generación Python del ejemplo `cadenas-pertenencia` falla actualmente con
+  `Expecting valid order from value block: text_contiene`, debido al generador
+  preexistente de `text_contiene` en `js/bloques.js`. No es un fallo del DSL ni
+  del compilador YAML.
 - Versión de Blockly fijada en `12.5.1` (CDN): al actualizar, revisar
   `Blockly.serialization`, `loadExtraState`, `Blockly.icons.MutatorIcon` y
   los generadores. Ojo: en esta versión `math_single` ya no tiene la opción
@@ -338,7 +400,12 @@ bibliotecas ni sintaxis avanzada de Python.
 
 - **v1 (original):** un único archivo `bloques-programacion.html` con CSS y JS
   embebidos y el temario como constante JS (`TEMARIO`).
-- **v2 (actual):** desempaquetado en proyecto con carpetas (`css/`, `js/`,
-  `data/`, `assets/`). El temario pasa a `data/temario.json`; las funciones de
-  montaje a `js/constructores.js` (asociadas por `id`); se añade soporte del
-  campo `estado` (JSON nativo de Blockly) para crear contenidos sin programar.
+- **v2:** desempaquetado en proyecto con carpetas (`css/`, `js/`, `data/`,
+  `assets/`). El temario pasa a `data/temario.json`; las funciones de montaje
+  a `js/constructores.js` (asociadas por `id`); se añade soporte del campo
+  `estado` (JSON nativo de Blockly).
+- **v3 (actual):** la autoría se divide en YAML por capítulo dentro de
+  `data/curso/`. `tools/compilar_contenido.py`, con PyYAML, valida y compila
+  esos archivos a `data/temario.json`; cada `programa` se convierte en
+  `estado` nativo de Blockly. La web sigue cargando solo el JSON y
+  `constructores.js` queda como referencia histórica.
