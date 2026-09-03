@@ -1,0 +1,187 @@
+capitulo:
+  id: control-flujo
+  numero: 3
+  titulo: Control del flujo
+  resumen: Tomar decisiones con si / si-no / si-no (if/elif/else), repetir con mientras (while) y controlar los bucles con romper y continuar.
+  bloques:
+  - variables_set
+  - variables_get
+  - math_number
+  - math_arithmetic
+  - operacion_extra
+  - logic_compare
+  - logic_operation
+  - logic_boolean
+  - controls_if
+  - controls_whileUntil
+  - controls_repeat_ext
+  - romper
+  - continuar
+  - no_hacer_nada
+  - pedir
+  - convertir
+  - text
+  - mostrar
+  ejemplos:
+  - id: logica-condicional
+    titulo: Condicional si / si-no
+    explicacion: Según la edad guardada, el programa decide qué frase mostrar.
+    programa:
+    - asignar:
+        variable: edad
+        valor:
+          numero: 15
+    - si:
+        condicion:
+          comparar:
+            izquierda:
+              variable: edad
+            operador: GTE
+            derecha:
+              numero: 18
+        entonces:
+        - mostrar:
+            texto: Eres mayor de edad
+        si_no:
+        - mostrar:
+            texto: Todavía eres menor de edad
+  - id: clasificar-nota
+    titulo: Clasificar una nota
+    explicacion: 'Con si / si-no / si-no comprobamos varios rangos: con un 7.5 el programa debe mostrar ''Notable.'''
+    programa:
+    - asignar:
+        variable: nota
+        valor:
+          numero: 7.5
+    - si:
+        condicion:
+          comparar:
+            izquierda:
+              variable: nota
+            operador: GTE
+            derecha:
+              numero: 9
+        entonces:
+        - mostrar:
+            texto: ¡Sobresaliente!
+        si_no_si:
+        - condicion:
+            comparar:
+              izquierda:
+                variable: nota
+              operador: GTE
+              derecha:
+                numero: 7
+          entonces:
+          - mostrar:
+              texto: Notable.
+        - condicion:
+            comparar:
+              izquierda:
+                variable: nota
+              operador: GTE
+              derecha:
+                numero: 5
+          entonces:
+          - mostrar:
+              texto: Aprobado.
+        si_no:
+        - mostrar:
+            texto: Suspendido.
+  - id: bucles-contar
+    titulo: Contar del 1 al 5
+    explicacion: Un bucle mientras repite mostrar y sumar 1 mientras el contador no supere 5.
+    programa:
+    - asignar:
+        variable: contador
+        valor:
+          numero: 1
+    - mientras:
+        condicion:
+          comparar:
+            izquierda:
+              variable: contador
+            operador: LTE
+            derecha:
+              numero: 5
+        hacer:
+        - mostrar:
+            variable: contador
+        - asignar:
+            variable: contador
+            valor:
+              sumar:
+              - variable: contador
+              - numero: 1
+  - id: bucles-despegue
+    titulo: Cuenta atrás y despegue
+    explicacion: Un bucle mientras muestra el contador y le resta 1 mientras sea mayor que 0; al salir del bucle mostramos '¡Despegue!'
+    programa:
+    - asignar:
+        variable: contador
+        valor:
+          numero: 5
+    - mientras:
+        condicion:
+          comparar:
+            izquierda:
+              variable: contador
+            operador: GT
+            derecha:
+              numero: 0
+        hacer:
+        - mostrar:
+            variable: contador
+        - asignar:
+            variable: contador
+            valor:
+              restar:
+              - variable: contador
+              - numero: 1
+    - mostrar:
+        texto: ¡Despegue!
+  tests:
+  - id: logica-puede-conducir
+    titulo: ¿Puede conducir?
+    enunciado: 'Ya tienes la variable edad = 16 creada. Añade un bloque "si / si-no": si edad es mayor o igual que 18, muestra "Puede conducir"; si no, muestra "Todavía no puede conducir".'
+    explicacion: Con edad = 16, la condición (edad ≥ 18) es falsa, así que el programa debe mostrar el mensaje del bloque "si no".
+    resultadoEsperado:
+    - Todavía no puede conducir
+    programa:
+    - asignar:
+        variable: edad
+        valor:
+          numero: 16
+  - id: mayor-de-edad
+    titulo: ¿Mayor de edad?
+    enunciado: Pide la edad al usuario con pedir, conviértela a número entero y muestra "Mayor de edad" si es 18 o más; si no, muestra "Menor de edad".
+    explicacion: El usuario escribirá 20, así que la condición se cumple y debe mostrarse el primer mensaje.
+    entradas:
+    - '20'
+    resultadoEsperado:
+    - Mayor de edad
+  - id: bucles-cuenta-atras
+    titulo: Cuenta atrás
+    enunciado: Ya tienes la variable contador = 5 creada. Usa un bucle mientras para mostrar el contador y restarle 1, repitiendo mientras contador sea mayor que 0.
+    explicacion: 'La condición se comprueba ANTES de cada vuelta: en cuanto contador llega a 0, el bucle se detiene, así que la última línea mostrada es 1.'
+    resultadoEsperado:
+    - '5'
+    - '4'
+    - '3'
+    - '2'
+    - '1'
+    programa:
+    - asignar:
+        variable: contador
+        valor:
+          numero: 5
+  - id: solo-impares
+    titulo: Solo números impares
+    enunciado: Crea una variable numero = 0. Con un bucle mientras que se repita mientras numero sea menor que 10, suma 1 a numero y, si el resto de dividirlo entre 2 es 0, usa continuar para saltar la vuelta. Después muestra numero.
+    explicacion: 'Los pares se saltan con continuar, así que solo se muestran los impares: 1, 3, 5, 7 y 9.'
+    resultadoEsperado:
+    - '1'
+    - '3'
+    - '5'
+    - '7'
+    - '9'

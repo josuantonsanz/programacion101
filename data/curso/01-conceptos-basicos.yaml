@@ -1,0 +1,113 @@
+capitulo:
+  id: conceptos-basicos
+  numero: 1
+  titulo: Conceptos básicos
+  resumen: Variables, tipos de dato, operadores aritméticos, mostrar resultados, pedir datos al usuario y convertir tipos.
+  bloques:
+  - variables_set
+  - variables_get
+  - text
+  - text_join
+  - math_number
+  - math_arithmetic
+  - pedir
+  - convertir
+  - mostrar
+  - tipo_de
+  ejemplos:
+  - id: variables-crear-tipos
+    titulo: Crear variables de distintos tipos
+    explicacion: Creamos tres variables (texto, número y booleano) y mostramos su valor y su tipo.
+    programa:
+    - asignar:
+        variable: nombre
+        valor:
+          texto: Ana
+    - asignar:
+        variable: edad
+        valor:
+          numero: 12
+    - asignar:
+        variable: esEstudiante
+        valor:
+          booleano: true
+    - mostrar:
+        variable: nombre
+    - mostrar:
+        tipo_de:
+          variable: nombre
+    - mostrar:
+        variable: edad
+    - mostrar:
+        tipo_de:
+          variable: edad
+    - mostrar:
+        variable: esEstudiante
+    - mostrar:
+        tipo_de:
+          variable: esEstudiante
+  - id: operadores-aritmeticos
+    titulo: Operadores aritméticos
+    explicacion: Guardamos dos números en variables y mostramos el resultado de sumarlos, restarlos, multiplicarlos y dividirlos.
+    programa:
+    - asignar:
+        variable: a
+        valor:
+          numero: 10
+    - asignar:
+        variable: b
+        valor:
+          numero: 5
+    - mostrar:
+        sumar:
+        - variable: a
+        - variable: b
+    - mostrar:
+        restar:
+        - variable: a
+        - variable: b
+    - mostrar:
+        multiplicar:
+        - variable: a
+        - variable: b
+    - mostrar:
+        dividir:
+        - variable: a
+        - variable: b
+  - id: entrada-y-casting
+    titulo: Pedir un dato y convertirlo
+    explicacion: pedir() devuelve siempre texto; lo convertimos a número entero con el bloque convertir para poder operar con él. Al ejecutar se abre un cuadro para escribir el dato.
+    programa:
+    - asignar:
+        variable: dato
+        valor:
+          pedir: 'Escribe un número: '
+    - asignar:
+        variable: numero
+        valor:
+          convertir:
+            a: entero
+            valor:
+              variable: dato
+    - mostrar:
+        variable: numero
+    - mostrar:
+        tipo_de:
+          variable: numero
+  tests:
+  - id: variables-ficha-personal
+    titulo: Tu ficha personal
+    enunciado: 'Crea una variable con tu nombre (texto) y otra con tu edad (número). Después, muestra el TIPO de cada una: primero el de tu nombre y luego el de tu edad.'
+    explicacion: 'Da igual el nombre o la edad exactos que elijas: lo que se comprueba es que el primer "tipo de" mostrado sea texto y el segundo, número.'
+    resultadoEsperado:
+    - texto
+    - número
+  - id: suma-de-dos-numeros
+    titulo: Suma de dos números
+    enunciado: Pide dos números al usuario con pedir, conviértelos a número entero y muestra su suma.
+    explicacion: 'El usuario escribirá 7 y 5. Recuerda que pedir devuelve texto: convierte cada entrada antes de sumar.'
+    entradas:
+    - '7'
+    - '5'
+    resultadoEsperado:
+    - '12'

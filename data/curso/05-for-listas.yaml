@@ -1,0 +1,329 @@
+capitulo:
+  id: for-listas
+  numero: 5
+  titulo: For y listas
+  resumen: 'Repetir con para cada (for) y rango, y guardar colecciones de datos en listas: crearlas, acceder, añadir, quitar, ordenar y recorrer.'
+  bloques:
+  - variables_set
+  - variables_get
+  - text
+  - text_join
+  - math_number
+  - math_arithmetic
+  - math_round
+  - math_random_int
+  - logic_compare
+  - logic_boolean
+  - controls_if
+  - controls_whileUntil
+  - controls_repeat_ext
+  - para_cada
+  - rango
+  - lista
+  - lista_vacia
+  - lista_longitud
+  - lista_elemento
+  - lista_parte
+  - lista_anadir
+  - lista_quitar
+  - lista_poner
+  - lista_ordenar
+  - lista_invertir
+  - lista_copiar
+  - lista_contiene
+  - pedir
+  - convertir
+  - mostrar
+  - tipo_de
+  ejemplos:
+  - id: bucles-range
+    titulo: El bucle para cada con rango
+    explicacion: range(3) genera 0, 1, 2; range(1, 6) genera 1 a 5; range(0, 11, 2) genera los pares del 0 al 10. El bloque para cada repite el cuerpo una vez por cada valor.
+    programa:
+    - para_cada:
+        variable: i
+        en:
+          rango:
+          - numero: 3
+        hacer:
+        - mostrar:
+            variable: i
+    - para_cada:
+        variable: i
+        en:
+          rango:
+          - numero: 1
+          - numero: 6
+        hacer:
+        - mostrar:
+            variable: i
+    - para_cada:
+        variable: i
+        en:
+          rango:
+          - numero: 0
+          - numero: 11
+          - numero: 2
+        hacer:
+        - mostrar:
+            variable: i
+  - id: bucles-repetir
+    titulo: Repetir N veces
+    explicacion: 'El bloque repetir N veces hace exactamente eso: muestra ''¡Hola!'' tres veces. Es la forma más corta de repetir cuando no necesitamos un contador.'
+    programa:
+    - repetir:
+        veces:
+          numero: 3
+        hacer:
+        - mostrar:
+            texto: ¡Hola!
+  - id: listas-crear-acceder
+    titulo: Crear y acceder a listas
+    explicacion: Guardamos tres frutas en una lista y accedemos a ellas por posición (0 = primera, -1 = última). La longitud de la lista es 3.
+    programa:
+    - asignar:
+        variable: frutas
+        valor:
+          lista:
+          - texto: manzana
+          - texto: pera
+          - texto: uva
+    - mostrar:
+        variable: frutas
+    - mostrar:
+        elemento:
+          lista:
+            variable: frutas
+          posicion:
+            numero: 0
+    - mostrar:
+        elemento:
+          lista:
+            variable: frutas
+          posicion:
+            numero: -1
+    - mostrar:
+        longitud_lista:
+          variable: frutas
+  - id: listas-metodos
+    titulo: Añadir, ordenar y quitar
+    explicacion: Creamos la lista con Leche y Pan, añadimos Manzanas al final, la ordenamos (alfabéticamente) y quitamos el último elemento con quitar, que además lo devuelve.
+    programa:
+    - asignar:
+        variable: compras
+        valor:
+          lista:
+          - texto: Leche
+          - texto: Pan
+    - mostrar:
+        variable: compras
+    - anadir:
+        a:
+          variable: compras
+        valor:
+          texto: Manzanas
+    - mostrar:
+        variable: compras
+    - ordenar:
+        variable: compras
+    - mostrar:
+        variable: compras
+    - mostrar:
+        quitar:
+          de:
+            variable: compras
+    - mostrar:
+        variable: compras
+  - id: listas-copiar
+    titulo: Copiar listas con cuidado
+    explicacion: 'Si hacemos listaMal = listaOriginal, las dos variables apuntan a la MISMA lista: al cambiar la primera letra por Z, la original también cambia. Con el bloque copia de creamos una copia independiente: cambiar la copia no afecta a la original.'
+    programa:
+    - asignar:
+        variable: listaOriginal
+        valor:
+          lista:
+          - texto: A
+          - texto: B
+          - texto: C
+    - asignar:
+        variable: listaMal
+        valor:
+          variable: listaOriginal
+    - poner:
+        en:
+          variable: listaMal
+        posicion:
+          numero: 0
+        valor:
+          texto: Z
+    - mostrar:
+        variable: listaOriginal
+    - asignar:
+        variable: listaBien
+        valor:
+          copiar:
+            lista:
+              variable: listaOriginal
+    - poner:
+        en:
+          variable: listaBien
+        posicion:
+          numero: 0
+        valor:
+          texto: Q
+    - mostrar:
+        variable: listaOriginal
+    - mostrar:
+        variable: listaBien
+  - id: bucles-listas-tareas
+    titulo: Recorrer listas
+    explicacion: 'Primero recorremos la lista directamente con para cada (tarea). Después recorremos por índice: para cada i desde 0 hasta longitud, mostramos el puesto (i+1) y la tarea de esa posición.'
+    programa:
+    - asignar:
+        variable: tareas
+        valor:
+          lista:
+          - texto: estudiar
+          - texto: dormir
+          - texto: comer
+    - para_cada:
+        variable: tarea
+        en:
+          variable: tareas
+        hacer:
+        - mostrar:
+            unir:
+            - texto: '- '
+            - variable: tarea
+    - para_cada:
+        variable: i
+        en:
+          rango:
+          - numero: 0
+          - longitud_lista:
+              variable: tareas
+        hacer:
+        - mostrar:
+            unir:
+            - convertir:
+                a: texto
+                valor:
+                  sumar:
+                  - variable: i
+                  - numero: 1
+            - texto: 'º puesto: '
+            - elemento:
+                lista:
+                  variable: tareas
+                posicion:
+                  variable: i
+  - id: listas-sorteo
+    titulo: Sorteo con números aleatorios
+    explicacion: Elegimos una posición al azar entre 0 y longitud-1 con el bloque número aleatorio entre y mostramos el participante de esa posición. ¡Ejecuta varias veces!
+    programa:
+    - asignar:
+        variable: participantes
+        valor:
+          lista:
+          - texto: Ana
+          - texto: Luis
+          - texto: Marta
+          - texto: Pedro
+    - asignar:
+        variable: ganador
+        valor:
+          elemento:
+            lista:
+              variable: participantes
+            posicion:
+              aleatorio:
+              - numero: 0
+              - restar:
+                - longitud_lista:
+                    variable: participantes
+                - numero: 1
+    - mostrar:
+        unir:
+        - texto: 'El ganador es: '
+        - variable: ganador
+  tests:
+  - id: bucles-contar-5
+    titulo: Contar del 1 al 5
+    enunciado: Usa el bloque para cada con rango(1, 6) para mostrar los números del 1 al 5 (uno en cada línea).
+    explicacion: 'range(1, 6) genera 1, 2, 3, 4, 5: el final no se incluye. Dentro del bucle solo hace falta mostrar la variable del bucle.'
+    resultadoEsperado:
+    - '1'
+    - '2'
+    - '3'
+    - '4'
+    - '5'
+  - id: bucles-pares
+    titulo: Pares del 0 al 10
+    enunciado: Usa para cada con rango(0, 11, 2) para mostrar los números pares del 0 al 10, uno en cada línea.
+    explicacion: 'El tercer número de rango es el paso: 0, 2, 4, 6, 8 y 10.'
+    resultadoEsperado:
+    - '0'
+    - '2'
+    - '4'
+    - '6'
+    - '8'
+    - '10'
+  - id: lista-compra
+    titulo: Lista de la compra
+    enunciado: Crea una lista vacía. Pide productos con pedir y añádelos a la lista con añadir a, mientras el producto no sea 'FIN'. Cuando el usuario escriba FIN, ordena la lista y muestra cuántos productos hay (longitud) y después cada producto con un para cada.
+    explicacion: 'El usuario escribirá Leche, Pan, Manzanas y FIN. La lista ordenada es [''Leche'', ''Manzanas'', ''Pan'']. Hay 3 productos, así que se muestran: 3, Leche, Manzanas y Pan.'
+    entradas:
+    - Leche
+    - Pan
+    - Manzanas
+    - FIN
+    resultadoEsperado:
+    - '3'
+    - Leche
+    - Manzanas
+    - Pan
+  - id: notas-analisis
+    titulo: Análisis de notas
+    enunciado: 'Ya tienes la lista notas creada. Recórrela y cuenta cuántas notas son aprobados (5 o más) y cuántas suspensos (menores que 5); suma todas las notas. Muestra en orden: número de aprobados, número de suspensos, la suma y la media redondeada (suma / longitud con redondear).'
+    explicacion: notas = [4, 8, 7, 9, 3, 6, 5, 10, 2]. Hay 6 aprobados (8, 7, 9, 6, 5, 10) y 3 suspensos (4, 3, 2). La suma es 54 y la media 54/9 = 6.
+    resultadoEsperado:
+    - '6'
+    - '3'
+    - '54'
+    - '6'
+    programa:
+    - asignar:
+        variable: notas
+        valor:
+          lista:
+          - numero: 4
+          - numero: 8
+          - numero: 7
+          - numero: 9
+          - numero: 3
+          - numero: 6
+          - numero: 5
+          - numero: 10
+          - numero: 2
+  - id: inversor-listas
+    titulo: Invertir una lista
+    enunciado: Ya tienes miLista y listaInvertida (vacía) creadas. Recorre los índices de miLista desde el último hasta el primero (rango con inicio longitud-1, final -1 y paso -1) y añade cada elemento a listaInvertida con añadir a. Después muestra miLista y listaInvertida.
+    explicacion: 'rango(longitud-1, -1, -1) genera 5, 4, 3, 2, 1, 0. Al recorrer miLista al revés y añadir a la lista nueva, queda invertida: [''c'', ''b'', ''a'', 3, 2, 1].'
+    resultadoEsperado:
+    - '[1, 2, 3, ''a'', ''b'', ''c'']'
+    - '[''c'', ''b'', ''a'', 3, 2, 1]'
+    programa:
+    - asignar:
+        variable: miLista
+        valor:
+          lista:
+          - numero: 1
+          - numero: 2
+          - numero: 3
+          - texto: a
+          - texto: b
+          - texto: c
+    - asignar:
+        variable: listaInvertida
+        valor:
+          lista_vacia: null

@@ -23,8 +23,9 @@ usar IA y sin instalar nada**.
   ejercicios nuevos sin programar.
 - 🎨 **Dos estilos visuales**: selector en la cabecera entre el diseño sobrio
   con Pico CSS y la estética de pizarra original; la elección se recuerda.
-- 📁 **Contenido 100% editable en JSON** (`data/temario.json`): añadir un tema
-  no requiere tocar JavaScript.
+- 📁 **Contenido editable por capítulo en YAML** (`data/curso/*.yaml`): añadir
+  o modificar contenido no requiere tocar JavaScript. `data/temario.json` se
+  genera automáticamente para conservar la aplicación estática.
 
 ---
 
@@ -41,13 +42,33 @@ bloques-programacion/
 │   ├── constructores.js    → funciones que montan bloques, asociadas por id
 │   └── app.js              → arranque, carga del temario, navegación, ejecución
 ├── data/
-│   └── temario.json        → todo el temario como datos (capítulos, ejemplos, tests)
+│   ├── curso/*.yaml        → fuente editable, un archivo por capítulo
+│   └── temario.json        → temario generado que carga la aplicación
+├── tools/
+│   └── compilar_contenido.py → compilador YAML → JSON Blockly
 ├── assets/                 → recursos estáticos (imágenes, iconos, …)
 └── README.md               → este documento
 ```
 
 > 📄 Para entender cómo funciona el código por dentro, lee también
 > [architecture.md](architecture.md).
+
+---
+
+## Editar y compilar el contenido (prototipo YAML)
+
+En esta copia experimental, edita los archivos de `data/curso/` y genera el
+JSON que consume la app antes de abrir o publicar el sitio:
+
+```powershell
+py -m pip install -r requirements.txt   # solo la primera vez
+py tools/compilar_contenido.py
+```
+
+Hay un YAML por capítulo y el compilador los lee en orden alfabético. Consulta
+[PROTOCOLO_CONTENIDO_YAML.md](PROTOCOLO_CONTENIDO_YAML.md) para el DSL completo,
+la semilla de ejemplos y ejercicios, y cómo compilar solo uno o varios archivos.
+No edites `data/temario.json` directamente.
 
 ---
 
@@ -104,16 +125,23 @@ Abajo del todo está el panel **🛠️ Panel del profesor**, con el botón
 **📋 Exportar JSON del espacio actual**: copia el estado nativo de Blockly
 (posición y conexión de todos los bloques) en formato JSON.
 
-Este JSON se puede pegar como campo `"estado"` de un ejemplo o ejercicio en
-`data/temario.json` → es la vía para crear contenidos **sin programar**.
+En este prototipo el JSON exportado es solo una herramienta de diagnóstico:
+la fuente editable es YAML en `data/curso/`. El compilador genera el campo
+`estado` de Blockly sin tener que pegar este JSON manualmente.
 
 ---
 
-## Cómo añadir contenido
+## Referencia técnica: JSON generado
 
-### 1. Nuevo capítulo
+> **No edites esta sección como procedimiento de autoría en el prototipo.**
+> El formato JSON siguiente es el artefacto que genera el compilador. Para
+> crear capítulos, ejemplos, semillas y ejercicios usa
+> [PROTOCOLO_CONTENIDO_YAML.md](PROTOCOLO_CONTENIDO_YAML.md) y los archivos de
+> `data/curso/`.
 
-Abre `data/temario.json` y añade un objeto a `capitulos`:
+### Forma equivalente en JSON
+
+El compilador produce un objeto `capitulos` de esta forma:
 
 ```json
 {

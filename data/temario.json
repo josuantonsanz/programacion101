@@ -5,22 +5,559 @@
       "numero": 1,
       "titulo": "Conceptos básicos",
       "resumen": "Variables, tipos de dato, operadores aritméticos, mostrar resultados, pedir datos al usuario y convertir tipos.",
-      "bloques": ["variables_set", "variables_get", "text", "text_join", "math_number", "math_arithmetic", "pedir", "convertir", "mostrar", "tipo_de"],
+      "bloques": [
+        "variables_set",
+        "variables_get",
+        "text",
+        "text_join",
+        "math_number",
+        "math_arithmetic",
+        "pedir",
+        "convertir",
+        "mostrar",
+        "tipo_de"
+      ],
       "ejemplos": [
         {
           "id": "variables-crear-tipos",
           "titulo": "Crear variables de distintos tipos",
-          "explicacion": "Creamos tres variables (texto, número y booleano) y mostramos su valor y su tipo."
+          "explicacion": "Creamos tres variables (texto, número y booleano) y mostramos su valor y su tipo.",
+          "estado": {
+            "blocks": {
+              "languageVersion": 0,
+              "blocks": [
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_nombre"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "text",
+                        "fields": {
+                          "TEXT": "Ana"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 24
+                },
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_edad"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "math_number",
+                        "fields": {
+                          "NUM": "12"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 134
+                },
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_esEstudiante"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "logic_boolean",
+                        "fields": {
+                          "BOOL": "TRUE"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 244
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "variables_get",
+                        "fields": {
+                          "VAR": {
+                            "id": "yaml_var_nombre"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 354
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "tipo_de",
+                        "inputs": {
+                          "VALOR": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_nombre"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 464
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "variables_get",
+                        "fields": {
+                          "VAR": {
+                            "id": "yaml_var_edad"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 574
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "tipo_de",
+                        "inputs": {
+                          "VALOR": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_edad"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 684
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "variables_get",
+                        "fields": {
+                          "VAR": {
+                            "id": "yaml_var_esEstudiante"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 794
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "tipo_de",
+                        "inputs": {
+                          "VALOR": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_esEstudiante"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 904
+                }
+              ]
+            },
+            "variables": [
+              {
+                "id": "yaml_var_edad",
+                "name": "edad",
+                "type": ""
+              },
+              {
+                "id": "yaml_var_esEstudiante",
+                "name": "esEstudiante",
+                "type": ""
+              },
+              {
+                "id": "yaml_var_nombre",
+                "name": "nombre",
+                "type": ""
+              }
+            ]
+          }
         },
         {
           "id": "operadores-aritmeticos",
           "titulo": "Operadores aritméticos",
-          "explicacion": "Guardamos dos números en variables y mostramos el resultado de sumarlos, restarlos, multiplicarlos y dividirlos."
+          "explicacion": "Guardamos dos números en variables y mostramos el resultado de sumarlos, restarlos, multiplicarlos y dividirlos.",
+          "estado": {
+            "blocks": {
+              "languageVersion": 0,
+              "blocks": [
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_a"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "math_number",
+                        "fields": {
+                          "NUM": "10"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 24
+                },
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_b"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "math_number",
+                        "fields": {
+                          "NUM": "5"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 134
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "math_arithmetic",
+                        "fields": {
+                          "OP": "ADD"
+                        },
+                        "inputs": {
+                          "A": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_a"
+                                }
+                              }
+                            }
+                          },
+                          "B": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_b"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 244
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "math_arithmetic",
+                        "fields": {
+                          "OP": "MINUS"
+                        },
+                        "inputs": {
+                          "A": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_a"
+                                }
+                              }
+                            }
+                          },
+                          "B": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_b"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 354
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "math_arithmetic",
+                        "fields": {
+                          "OP": "MULTIPLY"
+                        },
+                        "inputs": {
+                          "A": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_a"
+                                }
+                              }
+                            }
+                          },
+                          "B": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_b"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 464
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "math_arithmetic",
+                        "fields": {
+                          "OP": "DIVIDE"
+                        },
+                        "inputs": {
+                          "A": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_a"
+                                }
+                              }
+                            }
+                          },
+                          "B": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_b"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 574
+                }
+              ]
+            },
+            "variables": [
+              {
+                "id": "yaml_var_a",
+                "name": "a",
+                "type": ""
+              },
+              {
+                "id": "yaml_var_b",
+                "name": "b",
+                "type": ""
+              }
+            ]
+          }
         },
         {
           "id": "entrada-y-casting",
           "titulo": "Pedir un dato y convertirlo",
-          "explicacion": "pedir() devuelve siempre texto; lo convertimos a número entero con el bloque convertir para poder operar con él. Al ejecutar se abre un cuadro para escribir el dato."
+          "explicacion": "pedir() devuelve siempre texto; lo convertimos a número entero con el bloque convertir para poder operar con él. Al ejecutar se abre un cuadro para escribir el dato.",
+          "estado": {
+            "blocks": {
+              "languageVersion": 0,
+              "blocks": [
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_dato"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "pedir",
+                        "fields": {
+                          "MENSAJE": "Escribe un número: "
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 24
+                },
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_numero"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "convertir",
+                        "fields": {
+                          "TIPO": "ENTERO"
+                        },
+                        "inputs": {
+                          "VALOR": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_dato"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 134
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "variables_get",
+                        "fields": {
+                          "VAR": {
+                            "id": "yaml_var_numero"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 244
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "tipo_de",
+                        "inputs": {
+                          "VALOR": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_numero"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 354
+                }
+              ]
+            },
+            "variables": [
+              {
+                "id": "yaml_var_dato",
+                "name": "dato",
+                "type": ""
+              },
+              {
+                "id": "yaml_var_numero",
+                "name": "numero",
+                "type": ""
+              }
+            ]
+          }
         }
       ],
       "tests": [
@@ -29,15 +566,23 @@
           "titulo": "Tu ficha personal",
           "enunciado": "Crea una variable con tu nombre (texto) y otra con tu edad (número). Después, muestra el TIPO de cada una: primero el de tu nombre y luego el de tu edad.",
           "explicacion": "Da igual el nombre o la edad exactos que elijas: lo que se comprueba es que el primer \"tipo de\" mostrado sea texto y el segundo, número.",
-          "resultadoEsperado": ["texto", "número"]
+          "resultadoEsperado": [
+            "texto",
+            "número"
+          ]
         },
         {
           "id": "suma-de-dos-numeros",
           "titulo": "Suma de dos números",
           "enunciado": "Pide dos números al usuario con pedir, conviértelos a número entero y muestra su suma.",
           "explicacion": "El usuario escribirá 7 y 5. Recuerda que pedir devuelve texto: convierte cada entrada antes de sumar.",
-          "entradas": ["7", "5"],
-          "resultadoEsperado": ["12"]
+          "entradas": [
+            "7",
+            "5"
+          ],
+          "resultadoEsperado": [
+            "12"
+          ]
         }
       ]
     },
@@ -46,27 +591,725 @@
       "numero": 2,
       "titulo": "Operadores y lógica",
       "resumen": "Funciones internas (longitud, tipo), operadores avanzados (potencia, división entera, resto) y operadores de comparación y lógicos.",
-      "bloques": ["variables_set", "variables_get", "math_number", "math_arithmetic", "operacion_extra", "math_single", "text_length", "logic_compare", "logic_operation", "logic_negate", "logic_boolean", "mostrar", "tipo_de"],
+      "bloques": [
+        "variables_set",
+        "variables_get",
+        "math_number",
+        "math_arithmetic",
+        "operacion_extra",
+        "math_single",
+        "text_length",
+        "logic_compare",
+        "logic_operation",
+        "logic_negate",
+        "logic_boolean",
+        "mostrar",
+        "tipo_de"
+      ],
       "ejemplos": [
         {
           "id": "variables-funciones-estandar",
           "titulo": "Funciones internas",
-          "explicacion": "Usamos funciones ya incorporadas en Python (raíz cuadrada, longitud de texto) sobre el valor guardado en una variable."
+          "explicacion": "Usamos funciones ya incorporadas en Python (raíz cuadrada, longitud de texto) sobre el valor guardado en una variable.",
+          "estado": {
+            "blocks": {
+              "languageVersion": 0,
+              "blocks": [
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_numero"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "math_number",
+                        "fields": {
+                          "NUM": "16"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 24
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "text",
+                        "fields": {
+                          "TEXT": "Raíz cuadrada de 16:"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 134
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "math_single",
+                        "fields": {
+                          "OP": "ROOT"
+                        },
+                        "inputs": {
+                          "NUM": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_numero"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 244
+                },
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_palabra"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "text",
+                        "fields": {
+                          "TEXT": "Programación"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 354
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "text",
+                        "fields": {
+                          "TEXT": "Longitud de \"Programación\":"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 464
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "text_length",
+                        "inputs": {
+                          "VALUE": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_palabra"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 574
+                }
+              ]
+            },
+            "variables": [
+              {
+                "id": "yaml_var_numero",
+                "name": "numero",
+                "type": ""
+              },
+              {
+                "id": "yaml_var_palabra",
+                "name": "palabra",
+                "type": ""
+              }
+            ]
+          }
         },
         {
           "id": "operadores-avanzados",
           "titulo": "Potencia, división entera y resto",
-          "explicacion": "Probamos los operadores avanzados: 3 elevado a 2, la división entera de 7 entre 2 y el resto de 7 entre 2."
+          "explicacion": "Probamos los operadores avanzados: 3 elevado a 2, la división entera de 7 entre 2 y el resto de 7 entre 2.",
+          "estado": {
+            "blocks": {
+              "languageVersion": 0,
+              "blocks": [
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "operacion_extra",
+                        "fields": {
+                          "OP": "POW"
+                        },
+                        "inputs": {
+                          "A": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "3"
+                              }
+                            }
+                          },
+                          "B": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "2"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 24
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "operacion_extra",
+                        "fields": {
+                          "OP": "DIV_INT"
+                        },
+                        "inputs": {
+                          "A": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "7"
+                              }
+                            }
+                          },
+                          "B": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "2"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 134
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "operacion_extra",
+                        "fields": {
+                          "OP": "MOD"
+                        },
+                        "inputs": {
+                          "A": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "7"
+                              }
+                            }
+                          },
+                          "B": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "2"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 244
+                }
+              ]
+            },
+            "variables": []
+          }
         },
         {
           "id": "logica-comparar-numeros",
           "titulo": "Comparar dos números",
-          "explicacion": "Guardamos dos números y mostramos el resultado de compararlos (mayor que, igual que)."
+          "explicacion": "Guardamos dos números y mostramos el resultado de compararlos (mayor que, igual que).",
+          "estado": {
+            "blocks": {
+              "languageVersion": 0,
+              "blocks": [
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_a"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "math_number",
+                        "fields": {
+                          "NUM": "7"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 24
+                },
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_b"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "math_number",
+                        "fields": {
+                          "NUM": "3"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 134
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "logic_compare",
+                        "fields": {
+                          "OP": "GT"
+                        },
+                        "inputs": {
+                          "A": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_a"
+                                }
+                              }
+                            }
+                          },
+                          "B": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_b"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 244
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "logic_compare",
+                        "fields": {
+                          "OP": "EQ"
+                        },
+                        "inputs": {
+                          "A": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_a"
+                                }
+                              }
+                            }
+                          },
+                          "B": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_b"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 354
+                }
+              ]
+            },
+            "variables": [
+              {
+                "id": "yaml_var_a",
+                "name": "a",
+                "type": ""
+              },
+              {
+                "id": "yaml_var_b",
+                "name": "b",
+                "type": ""
+              }
+            ]
+          }
         },
         {
           "id": "operadores-logicos",
           "titulo": "Operadores lógicos (y, o, no)",
-          "explicacion": "Combinamos condiciones con 'y' y 'o', y negamos una con 'no': ¿puede pasar al concierto? ¿puede dormir hasta tarde? ¿llueve?"
+          "explicacion": "Combinamos condiciones con 'y' y 'o', y negamos una con 'no': ¿puede pasar al concierto? ¿puede dormir hasta tarde? ¿llueve?",
+          "estado": {
+            "blocks": {
+              "languageVersion": 0,
+              "blocks": [
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_edad"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "math_number",
+                        "fields": {
+                          "NUM": "25"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 24
+                },
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_tieneEntrada"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "logic_boolean",
+                        "fields": {
+                          "BOOL": "TRUE"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 134
+                },
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_puedePasar"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "logic_operation",
+                        "fields": {
+                          "OP": "AND"
+                        },
+                        "inputs": {
+                          "A": {
+                            "block": {
+                              "type": "logic_compare",
+                              "fields": {
+                                "OP": "GTE"
+                              },
+                              "inputs": {
+                                "A": {
+                                  "block": {
+                                    "type": "variables_get",
+                                    "fields": {
+                                      "VAR": {
+                                        "id": "yaml_var_edad"
+                                      }
+                                    }
+                                  }
+                                },
+                                "B": {
+                                  "block": {
+                                    "type": "math_number",
+                                    "fields": {
+                                      "NUM": "18"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "B": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_tieneEntrada"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 244
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "variables_get",
+                        "fields": {
+                          "VAR": {
+                            "id": "yaml_var_puedePasar"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 354
+                },
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_esFinDeSemana"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "logic_boolean",
+                        "fields": {
+                          "BOOL": "TRUE"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 464
+                },
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_estaDeVacaciones"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "logic_boolean",
+                        "fields": {
+                          "BOOL": "FALSE"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 574
+                },
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_puedeDormir"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "logic_operation",
+                        "fields": {
+                          "OP": "OR"
+                        },
+                        "inputs": {
+                          "A": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_esFinDeSemana"
+                                }
+                              }
+                            }
+                          },
+                          "B": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_estaDeVacaciones"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 684
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "variables_get",
+                        "fields": {
+                          "VAR": {
+                            "id": "yaml_var_puedeDormir"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 794
+                },
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_llueve"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "logic_boolean",
+                        "fields": {
+                          "BOOL": "FALSE"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 904
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "logic_negate",
+                        "inputs": {
+                          "BOOL": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_llueve"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 1014
+                }
+              ]
+            },
+            "variables": [
+              {
+                "id": "yaml_var_edad",
+                "name": "edad",
+                "type": ""
+              },
+              {
+                "id": "yaml_var_esFinDeSemana",
+                "name": "esFinDeSemana",
+                "type": ""
+              },
+              {
+                "id": "yaml_var_estaDeVacaciones",
+                "name": "estaDeVacaciones",
+                "type": ""
+              },
+              {
+                "id": "yaml_var_llueve",
+                "name": "llueve",
+                "type": ""
+              },
+              {
+                "id": "yaml_var_puedeDormir",
+                "name": "puedeDormir",
+                "type": ""
+              },
+              {
+                "id": "yaml_var_puedePasar",
+                "name": "puedePasar",
+                "type": ""
+              },
+              {
+                "id": "yaml_var_tieneEntrada",
+                "name": "tieneEntrada",
+                "type": ""
+              }
+            ]
+          }
         }
       ],
       "tests": [
@@ -75,7 +1318,9 @@
           "titulo": "Longitud de una frase",
           "enunciado": "Crea una variable frase = \"Hola mundo\" y muestra su longitud (el espacio también cuenta).",
           "explicacion": "Usa el bloque de longitud de texto sobre la variable. \"Hola mundo\" tiene 10 caracteres.",
-          "resultadoEsperado": ["10"]
+          "resultadoEsperado": [
+            "10"
+          ]
         }
       ]
     },
@@ -84,27 +1329,611 @@
       "numero": 3,
       "titulo": "Control del flujo",
       "resumen": "Tomar decisiones con si / si-no / si-no (if/elif/else), repetir con mientras (while) y controlar los bucles con romper y continuar.",
-      "bloques": ["variables_set", "variables_get", "math_number", "math_arithmetic", "operacion_extra", "logic_compare", "logic_operation", "logic_boolean", "controls_if", "controls_whileUntil", "controls_repeat_ext", "romper", "continuar", "no_hacer_nada", "pedir", "convertir", "text", "mostrar"],
+      "bloques": [
+        "variables_set",
+        "variables_get",
+        "math_number",
+        "math_arithmetic",
+        "operacion_extra",
+        "logic_compare",
+        "logic_operation",
+        "logic_boolean",
+        "controls_if",
+        "controls_whileUntil",
+        "controls_repeat_ext",
+        "romper",
+        "continuar",
+        "no_hacer_nada",
+        "pedir",
+        "convertir",
+        "text",
+        "mostrar"
+      ],
       "ejemplos": [
         {
           "id": "logica-condicional",
           "titulo": "Condicional si / si-no",
-          "explicacion": "Según la edad guardada, el programa decide qué frase mostrar."
+          "explicacion": "Según la edad guardada, el programa decide qué frase mostrar.",
+          "estado": {
+            "blocks": {
+              "languageVersion": 0,
+              "blocks": [
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_edad"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "math_number",
+                        "fields": {
+                          "NUM": "15"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 24
+                },
+                {
+                  "type": "controls_if",
+                  "inputs": {
+                    "IF0": {
+                      "block": {
+                        "type": "logic_compare",
+                        "fields": {
+                          "OP": "GTE"
+                        },
+                        "inputs": {
+                          "A": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_edad"
+                                }
+                              }
+                            }
+                          },
+                          "B": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "18"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "DO0": {
+                      "block": {
+                        "type": "mostrar",
+                        "inputs": {
+                          "VALOR": {
+                            "block": {
+                              "type": "text",
+                              "fields": {
+                                "TEXT": "Eres mayor de edad"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "ELSE": {
+                      "block": {
+                        "type": "mostrar",
+                        "inputs": {
+                          "VALOR": {
+                            "block": {
+                              "type": "text",
+                              "fields": {
+                                "TEXT": "Todavía eres menor de edad"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "extraState": {
+                    "elseIfCount": 0,
+                    "hasElse": true
+                  },
+                  "x": 24,
+                  "y": 134
+                }
+              ]
+            },
+            "variables": [
+              {
+                "id": "yaml_var_edad",
+                "name": "edad",
+                "type": ""
+              }
+            ]
+          }
         },
         {
           "id": "clasificar-nota",
           "titulo": "Clasificar una nota",
-          "explicacion": "Con si / si-no / si-no comprobamos varios rangos: con un 7.5 el programa debe mostrar 'Notable.'"
+          "explicacion": "Con si / si-no / si-no comprobamos varios rangos: con un 7.5 el programa debe mostrar 'Notable.'",
+          "estado": {
+            "blocks": {
+              "languageVersion": 0,
+              "blocks": [
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_nota"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "math_number",
+                        "fields": {
+                          "NUM": "7.5"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 24
+                },
+                {
+                  "type": "controls_if",
+                  "inputs": {
+                    "IF0": {
+                      "block": {
+                        "type": "logic_compare",
+                        "fields": {
+                          "OP": "GTE"
+                        },
+                        "inputs": {
+                          "A": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_nota"
+                                }
+                              }
+                            }
+                          },
+                          "B": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "9"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "DO0": {
+                      "block": {
+                        "type": "mostrar",
+                        "inputs": {
+                          "VALOR": {
+                            "block": {
+                              "type": "text",
+                              "fields": {
+                                "TEXT": "¡Sobresaliente!"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "IF1": {
+                      "block": {
+                        "type": "logic_compare",
+                        "fields": {
+                          "OP": "GTE"
+                        },
+                        "inputs": {
+                          "A": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_nota"
+                                }
+                              }
+                            }
+                          },
+                          "B": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "7"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "DO1": {
+                      "block": {
+                        "type": "mostrar",
+                        "inputs": {
+                          "VALOR": {
+                            "block": {
+                              "type": "text",
+                              "fields": {
+                                "TEXT": "Notable."
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "IF2": {
+                      "block": {
+                        "type": "logic_compare",
+                        "fields": {
+                          "OP": "GTE"
+                        },
+                        "inputs": {
+                          "A": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_nota"
+                                }
+                              }
+                            }
+                          },
+                          "B": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "5"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "DO2": {
+                      "block": {
+                        "type": "mostrar",
+                        "inputs": {
+                          "VALOR": {
+                            "block": {
+                              "type": "text",
+                              "fields": {
+                                "TEXT": "Aprobado."
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "ELSE": {
+                      "block": {
+                        "type": "mostrar",
+                        "inputs": {
+                          "VALOR": {
+                            "block": {
+                              "type": "text",
+                              "fields": {
+                                "TEXT": "Suspendido."
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "extraState": {
+                    "elseIfCount": 2,
+                    "hasElse": true
+                  },
+                  "x": 24,
+                  "y": 134
+                }
+              ]
+            },
+            "variables": [
+              {
+                "id": "yaml_var_nota",
+                "name": "nota",
+                "type": ""
+              }
+            ]
+          }
         },
         {
           "id": "bucles-contar",
           "titulo": "Contar del 1 al 5",
-          "explicacion": "Un bucle mientras repite mostrar y sumar 1 mientras el contador no supere 5."
+          "explicacion": "Un bucle mientras repite mostrar y sumar 1 mientras el contador no supere 5.",
+          "estado": {
+            "blocks": {
+              "languageVersion": 0,
+              "blocks": [
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_contador"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "math_number",
+                        "fields": {
+                          "NUM": "1"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 24
+                },
+                {
+                  "type": "controls_whileUntil",
+                  "fields": {
+                    "MODE": "WHILE"
+                  },
+                  "inputs": {
+                    "BOOL": {
+                      "block": {
+                        "type": "logic_compare",
+                        "fields": {
+                          "OP": "LTE"
+                        },
+                        "inputs": {
+                          "A": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_contador"
+                                }
+                              }
+                            }
+                          },
+                          "B": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "5"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "DO": {
+                      "block": {
+                        "type": "mostrar",
+                        "inputs": {
+                          "VALOR": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_contador"
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "next": {
+                          "block": {
+                            "type": "variables_set",
+                            "fields": {
+                              "VAR": {
+                                "id": "yaml_var_contador"
+                              }
+                            },
+                            "inputs": {
+                              "VALUE": {
+                                "block": {
+                                  "type": "math_arithmetic",
+                                  "fields": {
+                                    "OP": "ADD"
+                                  },
+                                  "inputs": {
+                                    "A": {
+                                      "block": {
+                                        "type": "variables_get",
+                                        "fields": {
+                                          "VAR": {
+                                            "id": "yaml_var_contador"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "B": {
+                                      "block": {
+                                        "type": "math_number",
+                                        "fields": {
+                                          "NUM": "1"
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 134
+                }
+              ]
+            },
+            "variables": [
+              {
+                "id": "yaml_var_contador",
+                "name": "contador",
+                "type": ""
+              }
+            ]
+          }
         },
         {
           "id": "bucles-despegue",
           "titulo": "Cuenta atrás y despegue",
-          "explicacion": "Un bucle mientras muestra el contador y le resta 1 mientras sea mayor que 0; al salir del bucle mostramos '¡Despegue!'"
+          "explicacion": "Un bucle mientras muestra el contador y le resta 1 mientras sea mayor que 0; al salir del bucle mostramos '¡Despegue!'",
+          "estado": {
+            "blocks": {
+              "languageVersion": 0,
+              "blocks": [
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_contador"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "math_number",
+                        "fields": {
+                          "NUM": "5"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 24
+                },
+                {
+                  "type": "controls_whileUntil",
+                  "fields": {
+                    "MODE": "WHILE"
+                  },
+                  "inputs": {
+                    "BOOL": {
+                      "block": {
+                        "type": "logic_compare",
+                        "fields": {
+                          "OP": "GT"
+                        },
+                        "inputs": {
+                          "A": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_contador"
+                                }
+                              }
+                            }
+                          },
+                          "B": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "0"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "DO": {
+                      "block": {
+                        "type": "mostrar",
+                        "inputs": {
+                          "VALOR": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_contador"
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "next": {
+                          "block": {
+                            "type": "variables_set",
+                            "fields": {
+                              "VAR": {
+                                "id": "yaml_var_contador"
+                              }
+                            },
+                            "inputs": {
+                              "VALUE": {
+                                "block": {
+                                  "type": "math_arithmetic",
+                                  "fields": {
+                                    "OP": "MINUS"
+                                  },
+                                  "inputs": {
+                                    "A": {
+                                      "block": {
+                                        "type": "variables_get",
+                                        "fields": {
+                                          "VAR": {
+                                            "id": "yaml_var_contador"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "B": {
+                                      "block": {
+                                        "type": "math_number",
+                                        "fields": {
+                                          "NUM": "1"
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 134
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "text",
+                        "fields": {
+                          "TEXT": "¡Despegue!"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 244
+                }
+              ]
+            },
+            "variables": [
+              {
+                "id": "yaml_var_contador",
+                "name": "contador",
+                "type": ""
+              }
+            ]
+          }
         }
       ],
       "tests": [
@@ -113,29 +1942,115 @@
           "titulo": "¿Puede conducir?",
           "enunciado": "Ya tienes la variable edad = 16 creada. Añade un bloque \"si / si-no\": si edad es mayor o igual que 18, muestra \"Puede conducir\"; si no, muestra \"Todavía no puede conducir\".",
           "explicacion": "Con edad = 16, la condición (edad ≥ 18) es falsa, así que el programa debe mostrar el mensaje del bloque \"si no\".",
-          "resultadoEsperado": ["Todavía no puede conducir"]
+          "resultadoEsperado": [
+            "Todavía no puede conducir"
+          ],
+          "estado": {
+            "blocks": {
+              "languageVersion": 0,
+              "blocks": [
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_edad"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "math_number",
+                        "fields": {
+                          "NUM": "16"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 24
+                }
+              ]
+            },
+            "variables": [
+              {
+                "id": "yaml_var_edad",
+                "name": "edad",
+                "type": ""
+              }
+            ]
+          }
         },
         {
           "id": "mayor-de-edad",
           "titulo": "¿Mayor de edad?",
           "enunciado": "Pide la edad al usuario con pedir, conviértela a número entero y muestra \"Mayor de edad\" si es 18 o más; si no, muestra \"Menor de edad\".",
           "explicacion": "El usuario escribirá 20, así que la condición se cumple y debe mostrarse el primer mensaje.",
-          "entradas": ["20"],
-          "resultadoEsperado": ["Mayor de edad"]
+          "entradas": [
+            "20"
+          ],
+          "resultadoEsperado": [
+            "Mayor de edad"
+          ]
         },
         {
           "id": "bucles-cuenta-atras",
           "titulo": "Cuenta atrás",
           "enunciado": "Ya tienes la variable contador = 5 creada. Usa un bucle mientras para mostrar el contador y restarle 1, repitiendo mientras contador sea mayor que 0.",
           "explicacion": "La condición se comprueba ANTES de cada vuelta: en cuanto contador llega a 0, el bucle se detiene, así que la última línea mostrada es 1.",
-          "resultadoEsperado": ["5", "4", "3", "2", "1"]
+          "resultadoEsperado": [
+            "5",
+            "4",
+            "3",
+            "2",
+            "1"
+          ],
+          "estado": {
+            "blocks": {
+              "languageVersion": 0,
+              "blocks": [
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_contador"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "math_number",
+                        "fields": {
+                          "NUM": "5"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 24
+                }
+              ]
+            },
+            "variables": [
+              {
+                "id": "yaml_var_contador",
+                "name": "contador",
+                "type": ""
+              }
+            ]
+          }
         },
         {
           "id": "solo-impares",
           "titulo": "Solo números impares",
           "enunciado": "Crea una variable numero = 0. Con un bucle mientras que se repita mientras numero sea menor que 10, suma 1 a numero y, si el resto de dividirlo entre 2 es 0, usa continuar para saltar la vuelta. Después muestra numero.",
           "explicacion": "Los pares se saltan con continuar, así que solo se muestran los impares: 1, 3, 5, 7 y 9.",
-          "resultadoEsperado": ["1", "3", "5", "7", "9"]
+          "resultadoEsperado": [
+            "1",
+            "3",
+            "5",
+            "7",
+            "9"
+          ]
         }
       ]
     },
@@ -144,37 +2059,907 @@
       "numero": 4,
       "titulo": "Cadenas",
       "resumen": "Trabajar con texto: acceder a caracteres, extraer partes, transformar mayúsculas y minúsculas, buscar, reemplazar y comprobar contenidos.",
-      "bloques": ["variables_set", "variables_get", "text", "text_join", "text_length", "text_repetir", "text_char", "text_slice", "text_transformar", "text_buscar", "text_reemplazar", "text_contiene", "text_tiene_mayuscula", "text_tiene_numero", "math_number", "pedir", "convertir", "mostrar", "tipo_de"],
+      "bloques": [
+        "variables_set",
+        "variables_get",
+        "text",
+        "text_join",
+        "text_length",
+        "text_repetir",
+        "text_char",
+        "text_slice",
+        "text_transformar",
+        "text_buscar",
+        "text_reemplazar",
+        "text_contiene",
+        "text_tiene_mayuscula",
+        "text_tiene_numero",
+        "math_number",
+        "pedir",
+        "convertir",
+        "mostrar",
+        "tipo_de"
+      ],
       "ejemplos": [
         {
           "id": "cadenas-indexacion",
           "titulo": "Acceder a caracteres (índices)",
-          "explicacion": "Cada carácter tiene una posición: la primera es la 0. Con índices negativos contamos desde el final (-1 es el último). Mostramos la P (posición 0), la H (posición 3) y la N (posición -1) de 'PYTHON'."
+          "explicacion": "Cada carácter tiene una posición: la primera es la 0. Con índices negativos contamos desde el final (-1 es el último). Mostramos la P (posición 0), la H (posición 3) y la N (posición -1) de 'PYTHON'.",
+          "estado": {
+            "blocks": {
+              "languageVersion": 0,
+              "blocks": [
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_palabra"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "text",
+                        "fields": {
+                          "TEXT": "PYTHON"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 24
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "text_char",
+                        "inputs": {
+                          "TEXTO": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_palabra"
+                                }
+                              }
+                            }
+                          },
+                          "POS": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "0"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 134
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "text_char",
+                        "inputs": {
+                          "TEXTO": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_palabra"
+                                }
+                              }
+                            }
+                          },
+                          "POS": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "3"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 244
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "text_char",
+                        "inputs": {
+                          "TEXTO": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_palabra"
+                                }
+                              }
+                            }
+                          },
+                          "POS": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "-1"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 354
+                }
+              ]
+            },
+            "variables": [
+              {
+                "id": "yaml_var_palabra",
+                "name": "palabra",
+                "type": ""
+              }
+            ]
+          }
         },
         {
           "id": "cadenas-slicing",
           "titulo": "Extraer partes de un texto",
-          "explicacion": "Con palabra[inicio:hasta] extraemos un trozo: PYT (de 0 a 3), THO (de 2 a 5) y HON (desde la 3 hasta el final). El carácter 'hasta' NO se incluye."
+          "explicacion": "Con palabra[inicio:hasta] extraemos un trozo: PYT (de 0 a 3), THO (de 2 a 5) y HON (desde la 3 hasta el final). El carácter 'hasta' NO se incluye.",
+          "estado": {
+            "blocks": {
+              "languageVersion": 0,
+              "blocks": [
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_palabra"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "text",
+                        "fields": {
+                          "TEXT": "PYTHON"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 24
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "text_slice",
+                        "inputs": {
+                          "TEXTO": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_palabra"
+                                }
+                              }
+                            }
+                          },
+                          "INICIO": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "0"
+                              }
+                            }
+                          },
+                          "FIN": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "3"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 134
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "text_slice",
+                        "inputs": {
+                          "TEXTO": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_palabra"
+                                }
+                              }
+                            }
+                          },
+                          "INICIO": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "2"
+                              }
+                            }
+                          },
+                          "FIN": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "5"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 244
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "text_slice",
+                        "inputs": {
+                          "TEXTO": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_palabra"
+                                }
+                              }
+                            }
+                          },
+                          "INICIO": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "3"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 354
+                }
+              ]
+            },
+            "variables": [
+              {
+                "id": "yaml_var_palabra",
+                "name": "palabra",
+                "type": ""
+              }
+            ]
+          }
         },
         {
           "id": "cadenas-transformar",
           "titulo": "Mayúsculas, minúsculas y espacios",
-          "explicacion": "Los métodos upper(), capitalize(), title() y strip() transforman el texto: 'josu' → 'JOSU' y 'Josu'; el título sale con mayúscula inicial en cada palabra y strip() elimina los espacios de alrededor."
+          "explicacion": "Los métodos upper(), capitalize(), title() y strip() transforman el texto: 'josu' → 'JOSU' y 'Josu'; el título sale con mayúscula inicial en cada palabra y strip() elimina los espacios de alrededor.",
+          "estado": {
+            "blocks": {
+              "languageVersion": 0,
+              "blocks": [
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_nombre"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "text",
+                        "fields": {
+                          "TEXT": "josu"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 24
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "text_transformar",
+                        "fields": {
+                          "METODO": "MAYUS"
+                        },
+                        "inputs": {
+                          "TEXTO": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_nombre"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 134
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "text_transformar",
+                        "fields": {
+                          "METODO": "CAPITAL"
+                        },
+                        "inputs": {
+                          "TEXTO": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_nombre"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 244
+                },
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_titulo"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "text",
+                        "fields": {
+                          "TEXT": "aprendiendo a programar"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 354
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "text_transformar",
+                        "fields": {
+                          "METODO": "TITULO"
+                        },
+                        "inputs": {
+                          "TEXTO": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_titulo"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 464
+                },
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_espaciado"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "text",
+                        "fields": {
+                          "TEXT": "  josu  "
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 574
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "text_transformar",
+                        "fields": {
+                          "METODO": "STRIP"
+                        },
+                        "inputs": {
+                          "TEXTO": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_espaciado"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 684
+                }
+              ]
+            },
+            "variables": [
+              {
+                "id": "yaml_var_espaciado",
+                "name": "espaciado",
+                "type": ""
+              },
+              {
+                "id": "yaml_var_nombre",
+                "name": "nombre",
+                "type": ""
+              },
+              {
+                "id": "yaml_var_titulo",
+                "name": "titulo",
+                "type": ""
+              }
+            ]
+          }
         },
         {
           "id": "cadenas-buscar-reemplazar",
           "titulo": "Buscar y reemplazar",
-          "explicacion": "find() devuelve la posición de la primera aparición: el @ de 'correo@dominio.com' está en la posición 6. replace() cambia todas las apariciones: 'aburrido' → 'divertido'."
+          "explicacion": "find() devuelve la posición de la primera aparición: el @ de 'correo@dominio.com' está en la posición 6. replace() cambia todas las apariciones: 'aburrido' → 'divertido'.",
+          "estado": {
+            "blocks": {
+              "languageVersion": 0,
+              "blocks": [
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_email"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "text",
+                        "fields": {
+                          "TEXT": "correo@dominio.com"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 24
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "text_buscar",
+                        "inputs": {
+                          "TEXTO": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_email"
+                                }
+                              }
+                            }
+                          },
+                          "BUSCAR": {
+                            "block": {
+                              "type": "text",
+                              "fields": {
+                                "TEXT": "@"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 134
+                },
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_frase"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "text",
+                        "fields": {
+                          "TEXT": "Python es aburrido"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 244
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "text_reemplazar",
+                        "inputs": {
+                          "TEXTO": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_frase"
+                                }
+                              }
+                            }
+                          },
+                          "VIEJO": {
+                            "block": {
+                              "type": "text",
+                              "fields": {
+                                "TEXT": "aburrido"
+                              }
+                            }
+                          },
+                          "NUEVO": {
+                            "block": {
+                              "type": "text",
+                              "fields": {
+                                "TEXT": "divertido"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 354
+                }
+              ]
+            },
+            "variables": [
+              {
+                "id": "yaml_var_email",
+                "name": "email",
+                "type": ""
+              },
+              {
+                "id": "yaml_var_frase",
+                "name": "frase",
+                "type": ""
+              }
+            ]
+          }
         },
         {
           "id": "cadenas-pertenencia",
           "titulo": "¿Está dentro? (operador in)",
-          "explicacion": "El operador in comprueba si un texto está dentro de otro: 'zorro' está en 'El zorro salta' (True) pero 'gato' no (False)."
+          "explicacion": "El operador in comprueba si un texto está dentro de otro: 'zorro' está en 'El zorro salta' (True) pero 'gato' no (False).",
+          "estado": {
+            "blocks": {
+              "languageVersion": 0,
+              "blocks": [
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_frase"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "text",
+                        "fields": {
+                          "TEXT": "El zorro salta"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 24
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "text_contiene",
+                        "inputs": {
+                          "SUB": {
+                            "block": {
+                              "type": "text",
+                              "fields": {
+                                "TEXT": "zorro"
+                              }
+                            }
+                          },
+                          "TEXTO": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_frase"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 134
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "text_contiene",
+                        "inputs": {
+                          "SUB": {
+                            "block": {
+                              "type": "text",
+                              "fields": {
+                                "TEXT": "gato"
+                              }
+                            }
+                          },
+                          "TEXTO": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_frase"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 244
+                }
+              ]
+            },
+            "variables": [
+              {
+                "id": "yaml_var_frase",
+                "name": "frase",
+                "type": ""
+              }
+            ]
+          }
         },
         {
           "id": "cadenas-nueva-cadena",
           "titulo": "Las cadenas no se modifican",
-          "explicacion": "Las cadenas son inmutables: no se pueden cambiar, solo crear otras nuevas. Cogemos la 'j' y el trozo 'osu' de 'josue' y los unimos para formar 'josu'; la variable original sigue intacta."
+          "explicacion": "Las cadenas son inmutables: no se pueden cambiar, solo crear otras nuevas. Cogemos la 'j' y el trozo 'osu' de 'josue' y los unimos para formar 'josu'; la variable original sigue intacta.",
+          "estado": {
+            "blocks": {
+              "languageVersion": 0,
+              "blocks": [
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_nombre"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "text",
+                        "fields": {
+                          "TEXT": "josue"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 24
+                },
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_apodo"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "text_join",
+                        "inputs": {
+                          "ADD0": {
+                            "block": {
+                              "type": "text_char",
+                              "inputs": {
+                                "TEXTO": {
+                                  "block": {
+                                    "type": "variables_get",
+                                    "fields": {
+                                      "VAR": {
+                                        "id": "yaml_var_nombre"
+                                      }
+                                    }
+                                  }
+                                },
+                                "POS": {
+                                  "block": {
+                                    "type": "math_number",
+                                    "fields": {
+                                      "NUM": "0"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "ADD1": {
+                            "block": {
+                              "type": "text_slice",
+                              "inputs": {
+                                "TEXTO": {
+                                  "block": {
+                                    "type": "variables_get",
+                                    "fields": {
+                                      "VAR": {
+                                        "id": "yaml_var_nombre"
+                                      }
+                                    }
+                                  }
+                                },
+                                "INICIO": {
+                                  "block": {
+                                    "type": "math_number",
+                                    "fields": {
+                                      "NUM": "1"
+                                    }
+                                  }
+                                },
+                                "FIN": {
+                                  "block": {
+                                    "type": "math_number",
+                                    "fields": {
+                                      "NUM": "4"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "extraState": {
+                          "itemCount": 2
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 134
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "variables_get",
+                        "fields": {
+                          "VAR": {
+                            "id": "yaml_var_apodo"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 244
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "variables_get",
+                        "fields": {
+                          "VAR": {
+                            "id": "yaml_var_nombre"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 354
+                }
+              ]
+            },
+            "variables": [
+              {
+                "id": "yaml_var_apodo",
+                "name": "apodo",
+                "type": ""
+              },
+              {
+                "id": "yaml_var_nombre",
+                "name": "nombre",
+                "type": ""
+              }
+            ]
+          }
         }
       ],
       "tests": [
@@ -183,32 +2968,51 @@
           "titulo": "Primera y última letra",
           "enunciado": "Pide una palabra con pedir y muestra su primera letra (posición 0) y después su última letra (posición -1).",
           "explicacion": "El usuario escribirá 'Python'. Usa el bloque carácter dos veces: carácter 0 de la palabra y carácter -1 de la palabra.",
-          "entradas": ["Python"],
-          "resultadoEsperado": ["P", "n"]
+          "entradas": [
+            "Python"
+          ],
+          "resultadoEsperado": [
+            "P",
+            "n"
+          ]
         },
         {
           "id": "cadenas-email",
           "titulo": "Partes de un correo",
           "enunciado": "Pide un correo electrónico con pedir. Muestra la parte que hay antes de la @ (desde el principio hasta la posición de la @) y la parte que hay después (desde la posición siguiente a la @ hasta el final).",
           "explicacion": "El usuario escribirá 'nombre.apellido@gmail.com'. Busca la posición de '@' con el bloque posición de: da 15. El primer trozo es texto[0:15] y el segundo texto[16:].",
-          "entradas": ["nombre.apellido@gmail.com"],
-          "resultadoEsperado": ["nombre.apellido", "gmail.com"]
+          "entradas": [
+            "nombre.apellido@gmail.com"
+          ],
+          "resultadoEsperado": [
+            "nombre.apellido",
+            "gmail.com"
+          ]
         },
         {
           "id": "cadenas-censor",
           "titulo": "Censurar una palabra",
           "enunciado": "Pide una frase y una palabra con pedir. Muestra la frase con todas las apariciones de esa palabra reemplazadas por '[CENSURADO]'.",
           "explicacion": "El usuario escribirá la frase 'Python es aburrido' y después la palabra 'aburrido'. Usa el bloque reemplazar sobre la frase.",
-          "entradas": ["Python es aburrido", "aburrido"],
-          "resultadoEsperado": ["Python es [CENSURADO]"]
+          "entradas": [
+            "Python es aburrido",
+            "aburrido"
+          ],
+          "resultadoEsperado": [
+            "Python es [CENSURADO]"
+          ]
         },
         {
           "id": "cadenas-formateador",
           "titulo": "Formatear un nombre",
           "enunciado": "Pide un nombre completo con pedir (puede llevar espacios alrededor y minúsculas). Muestra '¡Bienvenido, ' + el nombre sin espacios y con cada palabra en mayúscula inicial + '!'",
           "explicacion": "El usuario escribirá '  ana martinez  '. Quita los espacios con sin espacios alrededor, pon en formato título y únelo con el saludo usando el bloque unir.",
-          "entradas": ["  ana martinez  "],
-          "resultadoEsperado": ["¡Bienvenido, Ana Martinez!"]
+          "entradas": [
+            "  ana martinez  "
+          ],
+          "resultadoEsperado": [
+            "¡Bienvenido, Ana Martinez!"
+          ]
         }
       ]
     },
@@ -217,42 +3021,1319 @@
       "numero": 5,
       "titulo": "For y listas",
       "resumen": "Repetir con para cada (for) y rango, y guardar colecciones de datos en listas: crearlas, acceder, añadir, quitar, ordenar y recorrer.",
-      "bloques": ["variables_set", "variables_get", "text", "text_join", "math_number", "math_arithmetic", "math_round", "math_random_int", "logic_compare", "logic_boolean", "controls_if", "controls_whileUntil", "controls_repeat_ext", "para_cada", "rango", "lista", "lista_vacia", "lista_longitud", "lista_elemento", "lista_parte", "lista_anadir", "lista_quitar", "lista_poner", "lista_ordenar", "lista_invertir", "lista_copiar", "lista_contiene", "pedir", "convertir", "mostrar", "tipo_de"],
+      "bloques": [
+        "variables_set",
+        "variables_get",
+        "text",
+        "text_join",
+        "math_number",
+        "math_arithmetic",
+        "math_round",
+        "math_random_int",
+        "logic_compare",
+        "logic_boolean",
+        "controls_if",
+        "controls_whileUntil",
+        "controls_repeat_ext",
+        "para_cada",
+        "rango",
+        "lista",
+        "lista_vacia",
+        "lista_longitud",
+        "lista_elemento",
+        "lista_parte",
+        "lista_anadir",
+        "lista_quitar",
+        "lista_poner",
+        "lista_ordenar",
+        "lista_invertir",
+        "lista_copiar",
+        "lista_contiene",
+        "pedir",
+        "convertir",
+        "mostrar",
+        "tipo_de"
+      ],
       "ejemplos": [
         {
           "id": "bucles-range",
           "titulo": "El bucle para cada con rango",
-          "explicacion": "range(3) genera 0, 1, 2; range(1, 6) genera 1 a 5; range(0, 11, 2) genera los pares del 0 al 10. El bloque para cada repite el cuerpo una vez por cada valor."
+          "explicacion": "range(3) genera 0, 1, 2; range(1, 6) genera 1 a 5; range(0, 11, 2) genera los pares del 0 al 10. El bloque para cada repite el cuerpo una vez por cada valor.",
+          "estado": {
+            "blocks": {
+              "languageVersion": 0,
+              "blocks": [
+                {
+                  "type": "para_cada",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_i"
+                    }
+                  },
+                  "inputs": {
+                    "LISTA": {
+                      "block": {
+                        "type": "rango",
+                        "inputs": {
+                          "INICIO": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "3"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "DO": {
+                      "block": {
+                        "type": "mostrar",
+                        "inputs": {
+                          "VALOR": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_i"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 24
+                },
+                {
+                  "type": "para_cada",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_i"
+                    }
+                  },
+                  "inputs": {
+                    "LISTA": {
+                      "block": {
+                        "type": "rango",
+                        "inputs": {
+                          "INICIO": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "1"
+                              }
+                            }
+                          },
+                          "FIN": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "6"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "DO": {
+                      "block": {
+                        "type": "mostrar",
+                        "inputs": {
+                          "VALOR": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_i"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 134
+                },
+                {
+                  "type": "para_cada",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_i"
+                    }
+                  },
+                  "inputs": {
+                    "LISTA": {
+                      "block": {
+                        "type": "rango",
+                        "inputs": {
+                          "INICIO": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "0"
+                              }
+                            }
+                          },
+                          "FIN": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "11"
+                              }
+                            }
+                          },
+                          "PASO": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "2"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "DO": {
+                      "block": {
+                        "type": "mostrar",
+                        "inputs": {
+                          "VALOR": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_i"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 244
+                }
+              ]
+            },
+            "variables": [
+              {
+                "id": "yaml_var_i",
+                "name": "i",
+                "type": ""
+              }
+            ]
+          }
         },
         {
           "id": "bucles-repetir",
           "titulo": "Repetir N veces",
-          "explicacion": "El bloque repetir N veces hace exactamente eso: muestra '¡Hola!' tres veces. Es la forma más corta de repetir cuando no necesitamos un contador."
+          "explicacion": "El bloque repetir N veces hace exactamente eso: muestra '¡Hola!' tres veces. Es la forma más corta de repetir cuando no necesitamos un contador.",
+          "estado": {
+            "blocks": {
+              "languageVersion": 0,
+              "blocks": [
+                {
+                  "type": "controls_repeat_ext",
+                  "inputs": {
+                    "TIMES": {
+                      "block": {
+                        "type": "math_number",
+                        "fields": {
+                          "NUM": "3"
+                        }
+                      }
+                    },
+                    "DO": {
+                      "block": {
+                        "type": "mostrar",
+                        "inputs": {
+                          "VALOR": {
+                            "block": {
+                              "type": "text",
+                              "fields": {
+                                "TEXT": "¡Hola!"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 24
+                }
+              ]
+            },
+            "variables": []
+          }
         },
         {
           "id": "listas-crear-acceder",
           "titulo": "Crear y acceder a listas",
-          "explicacion": "Guardamos tres frutas en una lista y accedemos a ellas por posición (0 = primera, -1 = última). La longitud de la lista es 3."
+          "explicacion": "Guardamos tres frutas en una lista y accedemos a ellas por posición (0 = primera, -1 = última). La longitud de la lista es 3.",
+          "estado": {
+            "blocks": {
+              "languageVersion": 0,
+              "blocks": [
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_frutas"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "lista",
+                        "inputs": {
+                          "ADD0": {
+                            "block": {
+                              "type": "text",
+                              "fields": {
+                                "TEXT": "manzana"
+                              }
+                            }
+                          },
+                          "ADD1": {
+                            "block": {
+                              "type": "text",
+                              "fields": {
+                                "TEXT": "pera"
+                              }
+                            }
+                          },
+                          "ADD2": {
+                            "block": {
+                              "type": "text",
+                              "fields": {
+                                "TEXT": "uva"
+                              }
+                            }
+                          }
+                        },
+                        "extraState": {
+                          "itemCount": 3
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 24
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "variables_get",
+                        "fields": {
+                          "VAR": {
+                            "id": "yaml_var_frutas"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 134
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "lista_elemento",
+                        "inputs": {
+                          "LISTA": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_frutas"
+                                }
+                              }
+                            }
+                          },
+                          "POS": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "0"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 244
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "lista_elemento",
+                        "inputs": {
+                          "LISTA": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_frutas"
+                                }
+                              }
+                            }
+                          },
+                          "POS": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "-1"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 354
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "lista_longitud",
+                        "inputs": {
+                          "LISTA": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_frutas"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 464
+                }
+              ]
+            },
+            "variables": [
+              {
+                "id": "yaml_var_frutas",
+                "name": "frutas",
+                "type": ""
+              }
+            ]
+          }
         },
         {
           "id": "listas-metodos",
           "titulo": "Añadir, ordenar y quitar",
-          "explicacion": "Creamos la lista con Leche y Pan, añadimos Manzanas al final, la ordenamos (alfabéticamente) y quitamos el último elemento con quitar, que además lo devuelve."
+          "explicacion": "Creamos la lista con Leche y Pan, añadimos Manzanas al final, la ordenamos (alfabéticamente) y quitamos el último elemento con quitar, que además lo devuelve.",
+          "estado": {
+            "blocks": {
+              "languageVersion": 0,
+              "blocks": [
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_compras"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "lista",
+                        "inputs": {
+                          "ADD0": {
+                            "block": {
+                              "type": "text",
+                              "fields": {
+                                "TEXT": "Leche"
+                              }
+                            }
+                          },
+                          "ADD1": {
+                            "block": {
+                              "type": "text",
+                              "fields": {
+                                "TEXT": "Pan"
+                              }
+                            }
+                          }
+                        },
+                        "extraState": {
+                          "itemCount": 2
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 24
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "variables_get",
+                        "fields": {
+                          "VAR": {
+                            "id": "yaml_var_compras"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 134
+                },
+                {
+                  "type": "lista_anadir",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "text",
+                        "fields": {
+                          "TEXT": "Manzanas"
+                        }
+                      }
+                    },
+                    "LISTA": {
+                      "block": {
+                        "type": "variables_get",
+                        "fields": {
+                          "VAR": {
+                            "id": "yaml_var_compras"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 244
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "variables_get",
+                        "fields": {
+                          "VAR": {
+                            "id": "yaml_var_compras"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 354
+                },
+                {
+                  "type": "lista_ordenar",
+                  "inputs": {
+                    "LISTA": {
+                      "block": {
+                        "type": "variables_get",
+                        "fields": {
+                          "VAR": {
+                            "id": "yaml_var_compras"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 464
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "variables_get",
+                        "fields": {
+                          "VAR": {
+                            "id": "yaml_var_compras"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 574
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "lista_quitar",
+                        "inputs": {
+                          "LISTA": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_compras"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 684
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "variables_get",
+                        "fields": {
+                          "VAR": {
+                            "id": "yaml_var_compras"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 794
+                }
+              ]
+            },
+            "variables": [
+              {
+                "id": "yaml_var_compras",
+                "name": "compras",
+                "type": ""
+              }
+            ]
+          }
         },
         {
           "id": "listas-copiar",
           "titulo": "Copiar listas con cuidado",
-          "explicacion": "Si hacemos listaMal = listaOriginal, las dos variables apuntan a la MISMA lista: al cambiar la primera letra por Z, la original también cambia. Con el bloque copia de creamos una copia independiente: cambiar la copia no afecta a la original."
+          "explicacion": "Si hacemos listaMal = listaOriginal, las dos variables apuntan a la MISMA lista: al cambiar la primera letra por Z, la original también cambia. Con el bloque copia de creamos una copia independiente: cambiar la copia no afecta a la original.",
+          "estado": {
+            "blocks": {
+              "languageVersion": 0,
+              "blocks": [
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_listaOriginal"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "lista",
+                        "inputs": {
+                          "ADD0": {
+                            "block": {
+                              "type": "text",
+                              "fields": {
+                                "TEXT": "A"
+                              }
+                            }
+                          },
+                          "ADD1": {
+                            "block": {
+                              "type": "text",
+                              "fields": {
+                                "TEXT": "B"
+                              }
+                            }
+                          },
+                          "ADD2": {
+                            "block": {
+                              "type": "text",
+                              "fields": {
+                                "TEXT": "C"
+                              }
+                            }
+                          }
+                        },
+                        "extraState": {
+                          "itemCount": 3
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 24
+                },
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_listaMal"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "variables_get",
+                        "fields": {
+                          "VAR": {
+                            "id": "yaml_var_listaOriginal"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 134
+                },
+                {
+                  "type": "lista_poner",
+                  "inputs": {
+                    "LISTA": {
+                      "block": {
+                        "type": "variables_get",
+                        "fields": {
+                          "VAR": {
+                            "id": "yaml_var_listaMal"
+                          }
+                        }
+                      }
+                    },
+                    "POS": {
+                      "block": {
+                        "type": "math_number",
+                        "fields": {
+                          "NUM": "0"
+                        }
+                      }
+                    },
+                    "VALOR": {
+                      "block": {
+                        "type": "text",
+                        "fields": {
+                          "TEXT": "Z"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 244
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "variables_get",
+                        "fields": {
+                          "VAR": {
+                            "id": "yaml_var_listaOriginal"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 354
+                },
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_listaBien"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "lista_copiar",
+                        "inputs": {
+                          "LISTA": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_listaOriginal"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 464
+                },
+                {
+                  "type": "lista_poner",
+                  "inputs": {
+                    "LISTA": {
+                      "block": {
+                        "type": "variables_get",
+                        "fields": {
+                          "VAR": {
+                            "id": "yaml_var_listaBien"
+                          }
+                        }
+                      }
+                    },
+                    "POS": {
+                      "block": {
+                        "type": "math_number",
+                        "fields": {
+                          "NUM": "0"
+                        }
+                      }
+                    },
+                    "VALOR": {
+                      "block": {
+                        "type": "text",
+                        "fields": {
+                          "TEXT": "Q"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 574
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "variables_get",
+                        "fields": {
+                          "VAR": {
+                            "id": "yaml_var_listaOriginal"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 684
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "variables_get",
+                        "fields": {
+                          "VAR": {
+                            "id": "yaml_var_listaBien"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 794
+                }
+              ]
+            },
+            "variables": [
+              {
+                "id": "yaml_var_listaBien",
+                "name": "listaBien",
+                "type": ""
+              },
+              {
+                "id": "yaml_var_listaMal",
+                "name": "listaMal",
+                "type": ""
+              },
+              {
+                "id": "yaml_var_listaOriginal",
+                "name": "listaOriginal",
+                "type": ""
+              }
+            ]
+          }
         },
         {
           "id": "bucles-listas-tareas",
           "titulo": "Recorrer listas",
-          "explicacion": "Primero recorremos la lista directamente con para cada (tarea). Después recorremos por índice: para cada i desde 0 hasta longitud, mostramos el puesto (i+1) y la tarea de esa posición."
+          "explicacion": "Primero recorremos la lista directamente con para cada (tarea). Después recorremos por índice: para cada i desde 0 hasta longitud, mostramos el puesto (i+1) y la tarea de esa posición.",
+          "estado": {
+            "blocks": {
+              "languageVersion": 0,
+              "blocks": [
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_tareas"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "lista",
+                        "inputs": {
+                          "ADD0": {
+                            "block": {
+                              "type": "text",
+                              "fields": {
+                                "TEXT": "estudiar"
+                              }
+                            }
+                          },
+                          "ADD1": {
+                            "block": {
+                              "type": "text",
+                              "fields": {
+                                "TEXT": "dormir"
+                              }
+                            }
+                          },
+                          "ADD2": {
+                            "block": {
+                              "type": "text",
+                              "fields": {
+                                "TEXT": "comer"
+                              }
+                            }
+                          }
+                        },
+                        "extraState": {
+                          "itemCount": 3
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 24
+                },
+                {
+                  "type": "para_cada",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_tarea"
+                    }
+                  },
+                  "inputs": {
+                    "LISTA": {
+                      "block": {
+                        "type": "variables_get",
+                        "fields": {
+                          "VAR": {
+                            "id": "yaml_var_tareas"
+                          }
+                        }
+                      }
+                    },
+                    "DO": {
+                      "block": {
+                        "type": "mostrar",
+                        "inputs": {
+                          "VALOR": {
+                            "block": {
+                              "type": "text_join",
+                              "inputs": {
+                                "ADD0": {
+                                  "block": {
+                                    "type": "text",
+                                    "fields": {
+                                      "TEXT": "- "
+                                    }
+                                  }
+                                },
+                                "ADD1": {
+                                  "block": {
+                                    "type": "variables_get",
+                                    "fields": {
+                                      "VAR": {
+                                        "id": "yaml_var_tarea"
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              "extraState": {
+                                "itemCount": 2
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 134
+                },
+                {
+                  "type": "para_cada",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_i"
+                    }
+                  },
+                  "inputs": {
+                    "LISTA": {
+                      "block": {
+                        "type": "rango",
+                        "inputs": {
+                          "INICIO": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "0"
+                              }
+                            }
+                          },
+                          "FIN": {
+                            "block": {
+                              "type": "lista_longitud",
+                              "inputs": {
+                                "LISTA": {
+                                  "block": {
+                                    "type": "variables_get",
+                                    "fields": {
+                                      "VAR": {
+                                        "id": "yaml_var_tareas"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "DO": {
+                      "block": {
+                        "type": "mostrar",
+                        "inputs": {
+                          "VALOR": {
+                            "block": {
+                              "type": "text_join",
+                              "inputs": {
+                                "ADD0": {
+                                  "block": {
+                                    "type": "convertir",
+                                    "fields": {
+                                      "TIPO": "TEXTO"
+                                    },
+                                    "inputs": {
+                                      "VALOR": {
+                                        "block": {
+                                          "type": "math_arithmetic",
+                                          "fields": {
+                                            "OP": "ADD"
+                                          },
+                                          "inputs": {
+                                            "A": {
+                                              "block": {
+                                                "type": "variables_get",
+                                                "fields": {
+                                                  "VAR": {
+                                                    "id": "yaml_var_i"
+                                                  }
+                                                }
+                                              }
+                                            },
+                                            "B": {
+                                              "block": {
+                                                "type": "math_number",
+                                                "fields": {
+                                                  "NUM": "1"
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "ADD1": {
+                                  "block": {
+                                    "type": "text",
+                                    "fields": {
+                                      "TEXT": "º puesto: "
+                                    }
+                                  }
+                                },
+                                "ADD2": {
+                                  "block": {
+                                    "type": "lista_elemento",
+                                    "inputs": {
+                                      "LISTA": {
+                                        "block": {
+                                          "type": "variables_get",
+                                          "fields": {
+                                            "VAR": {
+                                              "id": "yaml_var_tareas"
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "POS": {
+                                        "block": {
+                                          "type": "variables_get",
+                                          "fields": {
+                                            "VAR": {
+                                              "id": "yaml_var_i"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              "extraState": {
+                                "itemCount": 3
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 244
+                }
+              ]
+            },
+            "variables": [
+              {
+                "id": "yaml_var_i",
+                "name": "i",
+                "type": ""
+              },
+              {
+                "id": "yaml_var_tarea",
+                "name": "tarea",
+                "type": ""
+              },
+              {
+                "id": "yaml_var_tareas",
+                "name": "tareas",
+                "type": ""
+              }
+            ]
+          }
         },
         {
           "id": "listas-sorteo",
           "titulo": "Sorteo con números aleatorios",
-          "explicacion": "Elegimos una posición al azar entre 0 y longitud-1 con el bloque número aleatorio entre y mostramos el participante de esa posición. ¡Ejecuta varias veces!"
+          "explicacion": "Elegimos una posición al azar entre 0 y longitud-1 con el bloque número aleatorio entre y mostramos el participante de esa posición. ¡Ejecuta varias veces!",
+          "estado": {
+            "blocks": {
+              "languageVersion": 0,
+              "blocks": [
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_participantes"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "lista",
+                        "inputs": {
+                          "ADD0": {
+                            "block": {
+                              "type": "text",
+                              "fields": {
+                                "TEXT": "Ana"
+                              }
+                            }
+                          },
+                          "ADD1": {
+                            "block": {
+                              "type": "text",
+                              "fields": {
+                                "TEXT": "Luis"
+                              }
+                            }
+                          },
+                          "ADD2": {
+                            "block": {
+                              "type": "text",
+                              "fields": {
+                                "TEXT": "Marta"
+                              }
+                            }
+                          },
+                          "ADD3": {
+                            "block": {
+                              "type": "text",
+                              "fields": {
+                                "TEXT": "Pedro"
+                              }
+                            }
+                          }
+                        },
+                        "extraState": {
+                          "itemCount": 4
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 24
+                },
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_ganador"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "lista_elemento",
+                        "inputs": {
+                          "LISTA": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_participantes"
+                                }
+                              }
+                            }
+                          },
+                          "POS": {
+                            "block": {
+                              "type": "math_random_int",
+                              "inputs": {
+                                "FROM": {
+                                  "block": {
+                                    "type": "math_number",
+                                    "fields": {
+                                      "NUM": "0"
+                                    }
+                                  }
+                                },
+                                "TO": {
+                                  "block": {
+                                    "type": "math_arithmetic",
+                                    "fields": {
+                                      "OP": "MINUS"
+                                    },
+                                    "inputs": {
+                                      "A": {
+                                        "block": {
+                                          "type": "lista_longitud",
+                                          "inputs": {
+                                            "LISTA": {
+                                              "block": {
+                                                "type": "variables_get",
+                                                "fields": {
+                                                  "VAR": {
+                                                    "id": "yaml_var_participantes"
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "B": {
+                                        "block": {
+                                          "type": "math_number",
+                                          "fields": {
+                                            "NUM": "1"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 134
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "text_join",
+                        "inputs": {
+                          "ADD0": {
+                            "block": {
+                              "type": "text",
+                              "fields": {
+                                "TEXT": "El ganador es: "
+                              }
+                            }
+                          },
+                          "ADD1": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_ganador"
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "extraState": {
+                          "itemCount": 2
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 244
+                }
+              ]
+            },
+            "variables": [
+              {
+                "id": "yaml_var_ganador",
+                "name": "ganador",
+                "type": ""
+              },
+              {
+                "id": "yaml_var_participantes",
+                "name": "participantes",
+                "type": ""
+              }
+            ]
+          }
         }
       ],
       "tests": [
@@ -261,36 +4342,281 @@
           "titulo": "Contar del 1 al 5",
           "enunciado": "Usa el bloque para cada con rango(1, 6) para mostrar los números del 1 al 5 (uno en cada línea).",
           "explicacion": "range(1, 6) genera 1, 2, 3, 4, 5: el final no se incluye. Dentro del bucle solo hace falta mostrar la variable del bucle.",
-          "resultadoEsperado": ["1", "2", "3", "4", "5"]
+          "resultadoEsperado": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ]
         },
         {
           "id": "bucles-pares",
           "titulo": "Pares del 0 al 10",
           "enunciado": "Usa para cada con rango(0, 11, 2) para mostrar los números pares del 0 al 10, uno en cada línea.",
           "explicacion": "El tercer número de rango es el paso: 0, 2, 4, 6, 8 y 10.",
-          "resultadoEsperado": ["0", "2", "4", "6", "8", "10"]
+          "resultadoEsperado": [
+            "0",
+            "2",
+            "4",
+            "6",
+            "8",
+            "10"
+          ]
         },
         {
           "id": "lista-compra",
           "titulo": "Lista de la compra",
           "enunciado": "Crea una lista vacía. Pide productos con pedir y añádelos a la lista con añadir a, mientras el producto no sea 'FIN'. Cuando el usuario escriba FIN, ordena la lista y muestra cuántos productos hay (longitud) y después cada producto con un para cada.",
           "explicacion": "El usuario escribirá Leche, Pan, Manzanas y FIN. La lista ordenada es ['Leche', 'Manzanas', 'Pan']. Hay 3 productos, así que se muestran: 3, Leche, Manzanas y Pan.",
-          "entradas": ["Leche", "Pan", "Manzanas", "FIN"],
-          "resultadoEsperado": ["3", "Leche", "Manzanas", "Pan"]
+          "entradas": [
+            "Leche",
+            "Pan",
+            "Manzanas",
+            "FIN"
+          ],
+          "resultadoEsperado": [
+            "3",
+            "Leche",
+            "Manzanas",
+            "Pan"
+          ]
         },
         {
           "id": "notas-analisis",
           "titulo": "Análisis de notas",
           "enunciado": "Ya tienes la lista notas creada. Recórrela y cuenta cuántas notas son aprobados (5 o más) y cuántas suspensos (menores que 5); suma todas las notas. Muestra en orden: número de aprobados, número de suspensos, la suma y la media redondeada (suma / longitud con redondear).",
           "explicacion": "notas = [4, 8, 7, 9, 3, 6, 5, 10, 2]. Hay 6 aprobados (8, 7, 9, 6, 5, 10) y 3 suspensos (4, 3, 2). La suma es 54 y la media 54/9 = 6.",
-          "resultadoEsperado": ["6", "3", "54", "6"]
+          "resultadoEsperado": [
+            "6",
+            "3",
+            "54",
+            "6"
+          ],
+          "estado": {
+            "blocks": {
+              "languageVersion": 0,
+              "blocks": [
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_notas"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "lista",
+                        "inputs": {
+                          "ADD0": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "4"
+                              }
+                            }
+                          },
+                          "ADD1": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "8"
+                              }
+                            }
+                          },
+                          "ADD2": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "7"
+                              }
+                            }
+                          },
+                          "ADD3": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "9"
+                              }
+                            }
+                          },
+                          "ADD4": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "3"
+                              }
+                            }
+                          },
+                          "ADD5": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "6"
+                              }
+                            }
+                          },
+                          "ADD6": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "5"
+                              }
+                            }
+                          },
+                          "ADD7": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "10"
+                              }
+                            }
+                          },
+                          "ADD8": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "2"
+                              }
+                            }
+                          }
+                        },
+                        "extraState": {
+                          "itemCount": 9
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 24
+                }
+              ]
+            },
+            "variables": [
+              {
+                "id": "yaml_var_notas",
+                "name": "notas",
+                "type": ""
+              }
+            ]
+          }
         },
         {
           "id": "inversor-listas",
           "titulo": "Invertir una lista",
           "enunciado": "Ya tienes miLista y listaInvertida (vacía) creadas. Recorre los índices de miLista desde el último hasta el primero (rango con inicio longitud-1, final -1 y paso -1) y añade cada elemento a listaInvertida con añadir a. Después muestra miLista y listaInvertida.",
           "explicacion": "rango(longitud-1, -1, -1) genera 5, 4, 3, 2, 1, 0. Al recorrer miLista al revés y añadir a la lista nueva, queda invertida: ['c', 'b', 'a', 3, 2, 1].",
-          "resultadoEsperado": ["[1, 2, 3, 'a', 'b', 'c']", "['c', 'b', 'a', 3, 2, 1]"]
+          "resultadoEsperado": [
+            "[1, 2, 3, 'a', 'b', 'c']",
+            "['c', 'b', 'a', 3, 2, 1]"
+          ],
+          "estado": {
+            "blocks": {
+              "languageVersion": 0,
+              "blocks": [
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_miLista"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "lista",
+                        "inputs": {
+                          "ADD0": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "1"
+                              }
+                            }
+                          },
+                          "ADD1": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "2"
+                              }
+                            }
+                          },
+                          "ADD2": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "3"
+                              }
+                            }
+                          },
+                          "ADD3": {
+                            "block": {
+                              "type": "text",
+                              "fields": {
+                                "TEXT": "a"
+                              }
+                            }
+                          },
+                          "ADD4": {
+                            "block": {
+                              "type": "text",
+                              "fields": {
+                                "TEXT": "b"
+                              }
+                            }
+                          },
+                          "ADD5": {
+                            "block": {
+                              "type": "text",
+                              "fields": {
+                                "TEXT": "c"
+                              }
+                            }
+                          }
+                        },
+                        "extraState": {
+                          "itemCount": 6
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 24
+                },
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_listaInvertida"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "lista_vacia"
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 134
+                }
+              ]
+            },
+            "variables": [
+              {
+                "id": "yaml_var_listaInvertida",
+                "name": "listaInvertida",
+                "type": ""
+              },
+              {
+                "id": "yaml_var_miLista",
+                "name": "miLista",
+                "type": ""
+              }
+            ]
+          }
         }
       ]
     },
@@ -299,27 +4625,633 @@
       "numero": 6,
       "titulo": "Funciones",
       "resumen": "Crear funciones propias para reutilizar código: definirlas con parámetros, llamarlas, devolver valores con return y entender el ámbito de las variables.",
-      "bloques": ["variables_set", "variables_get", "text", "text_join", "text_length", "text_tiene_mayuscula", "text_tiene_numero", "math_number", "math_arithmetic", "operacion_extra", "logic_compare", "logic_operation", "logic_boolean", "controls_if", "controls_whileUntil", "funcion_definir", "funcion_llamar", "devolver", "pedir", "convertir", "mostrar", "tipo_de"],
+      "bloques": [
+        "variables_set",
+        "variables_get",
+        "text",
+        "text_join",
+        "text_length",
+        "text_tiene_mayuscula",
+        "text_tiene_numero",
+        "math_number",
+        "math_arithmetic",
+        "operacion_extra",
+        "logic_compare",
+        "logic_operation",
+        "logic_boolean",
+        "controls_if",
+        "controls_whileUntil",
+        "funcion_definir",
+        "funcion_llamar",
+        "devolver",
+        "pedir",
+        "convertir",
+        "mostrar",
+        "tipo_de"
+      ],
       "ejemplos": [
         {
           "id": "funciones-saludar",
           "titulo": "Definir y llamar una función",
-          "explicacion": "Definimos la función saludar() que muestra un saludo, y luego la llamamos dos veces: cada llamada ejecuta su cuerpo. El programa principal va después de la definición."
+          "explicacion": "Definimos la función saludar() que muestra un saludo, y luego la llamamos dos veces: cada llamada ejecuta su cuerpo. El programa principal va después de la definición.",
+          "estado": {
+            "blocks": {
+              "languageVersion": 0,
+              "blocks": [
+                {
+                  "type": "funcion_definir",
+                  "fields": {
+                    "NOMBRE": "saludar",
+                    "PARAMS": ""
+                  },
+                  "inputs": {
+                    "DO": {
+                      "block": {
+                        "type": "mostrar",
+                        "inputs": {
+                          "VALOR": {
+                            "block": {
+                              "type": "text",
+                              "fields": {
+                                "TEXT": "¡Hola! Me llamo Python."
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 24
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "text",
+                        "fields": {
+                          "TEXT": "Vamos a saludar:"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 134
+                },
+                {
+                  "type": "funcion_llamar",
+                  "fields": {
+                    "NOMBRE": "saludar"
+                  },
+                  "x": 24,
+                  "y": 244
+                },
+                {
+                  "type": "funcion_llamar",
+                  "fields": {
+                    "NOMBRE": "saludar"
+                  },
+                  "x": 24,
+                  "y": 354
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "text",
+                        "fields": {
+                          "TEXT": "¡Fin del programa!"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 464
+                }
+              ]
+            },
+            "variables": []
+          }
         },
         {
           "id": "funciones-parametros",
           "titulo": "Funciones con parámetros",
-          "explicacion": "saludarA(nombre) recibe un parámetro y lo usa dentro. Llamamos a la función con 'Ana' y con 'Marcos': el mismo código, distinto resultado."
+          "explicacion": "saludarA(nombre) recibe un parámetro y lo usa dentro. Llamamos a la función con 'Ana' y con 'Marcos': el mismo código, distinto resultado.",
+          "estado": {
+            "blocks": {
+              "languageVersion": 0,
+              "blocks": [
+                {
+                  "type": "funcion_definir",
+                  "fields": {
+                    "NOMBRE": "saludarA",
+                    "PARAMS": "nombre"
+                  },
+                  "inputs": {
+                    "DO": {
+                      "block": {
+                        "type": "mostrar",
+                        "inputs": {
+                          "VALOR": {
+                            "block": {
+                              "type": "text_join",
+                              "inputs": {
+                                "ADD0": {
+                                  "block": {
+                                    "type": "text",
+                                    "fields": {
+                                      "TEXT": "¡Hola, "
+                                    }
+                                  }
+                                },
+                                "ADD1": {
+                                  "block": {
+                                    "type": "variables_get",
+                                    "fields": {
+                                      "VAR": {
+                                        "id": "yaml_var_nombre"
+                                      }
+                                    }
+                                  }
+                                },
+                                "ADD2": {
+                                  "block": {
+                                    "type": "text",
+                                    "fields": {
+                                      "TEXT": "!"
+                                    }
+                                  }
+                                }
+                              },
+                              "extraState": {
+                                "itemCount": 3
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 24
+                },
+                {
+                  "type": "funcion_llamar",
+                  "fields": {
+                    "NOMBRE": "saludarA"
+                  },
+                  "inputs": {
+                    "ARG1": {
+                      "block": {
+                        "type": "text",
+                        "fields": {
+                          "TEXT": "Ana"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 134
+                },
+                {
+                  "type": "funcion_llamar",
+                  "fields": {
+                    "NOMBRE": "saludarA"
+                  },
+                  "inputs": {
+                    "ARG1": {
+                      "block": {
+                        "type": "text",
+                        "fields": {
+                          "TEXT": "Marcos"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 244
+                }
+              ]
+            },
+            "variables": [
+              {
+                "id": "yaml_var_nombre",
+                "name": "nombre",
+                "type": ""
+              }
+            ]
+          }
         },
         {
           "id": "funciones-return",
           "titulo": "Devolver valores con return",
-          "explicacion": "sumar(a, b) calcula y DEVUELVE el resultado con devolver, así que podemos guardarlo en una variable o usarlo en una operación. Una función sin devolver devuelve None."
+          "explicacion": "sumar(a, b) calcula y DEVUELVE el resultado con devolver, así que podemos guardarlo en una variable o usarlo en una operación. Una función sin devolver devuelve None.",
+          "estado": {
+            "blocks": {
+              "languageVersion": 0,
+              "blocks": [
+                {
+                  "type": "funcion_definir",
+                  "fields": {
+                    "NOMBRE": "sumar",
+                    "PARAMS": "a, b"
+                  },
+                  "inputs": {
+                    "DO": {
+                      "block": {
+                        "type": "variables_set",
+                        "fields": {
+                          "VAR": {
+                            "id": "yaml_var_resultado"
+                          }
+                        },
+                        "inputs": {
+                          "VALUE": {
+                            "block": {
+                              "type": "math_arithmetic",
+                              "fields": {
+                                "OP": "ADD"
+                              },
+                              "inputs": {
+                                "A": {
+                                  "block": {
+                                    "type": "variables_get",
+                                    "fields": {
+                                      "VAR": {
+                                        "id": "yaml_var_a"
+                                      }
+                                    }
+                                  }
+                                },
+                                "B": {
+                                  "block": {
+                                    "type": "variables_get",
+                                    "fields": {
+                                      "VAR": {
+                                        "id": "yaml_var_b"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "next": {
+                          "block": {
+                            "type": "devolver",
+                            "inputs": {
+                              "VALOR": {
+                                "block": {
+                                  "type": "variables_get",
+                                  "fields": {
+                                    "VAR": {
+                                      "id": "yaml_var_resultado"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 24
+                },
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_total"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "funcion_llamar",
+                        "fields": {
+                          "NOMBRE": "sumar"
+                        },
+                        "inputs": {
+                          "ARG1": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "3"
+                              }
+                            }
+                          },
+                          "ARG2": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "4"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 134
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "variables_get",
+                        "fields": {
+                          "VAR": {
+                            "id": "yaml_var_total"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 244
+                },
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_doble"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "math_arithmetic",
+                        "fields": {
+                          "OP": "MULTIPLY"
+                        },
+                        "inputs": {
+                          "A": {
+                            "block": {
+                              "type": "funcion_llamar",
+                              "fields": {
+                                "NOMBRE": "sumar"
+                              },
+                              "inputs": {
+                                "ARG1": {
+                                  "block": {
+                                    "type": "math_number",
+                                    "fields": {
+                                      "NUM": "5"
+                                    }
+                                  }
+                                },
+                                "ARG2": {
+                                  "block": {
+                                    "type": "math_number",
+                                    "fields": {
+                                      "NUM": "2"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "B": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "2"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 354
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "variables_get",
+                        "fields": {
+                          "VAR": {
+                            "id": "yaml_var_doble"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 464
+                },
+                {
+                  "type": "funcion_definir",
+                  "fields": {
+                    "NOMBRE": "funcionVacia",
+                    "PARAMS": ""
+                  },
+                  "x": 24,
+                  "y": 574
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "funcion_llamar",
+                        "fields": {
+                          "NOMBRE": "funcionVacia"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 684
+                }
+              ]
+            },
+            "variables": [
+              {
+                "id": "yaml_var_a",
+                "name": "a",
+                "type": ""
+              },
+              {
+                "id": "yaml_var_b",
+                "name": "b",
+                "type": ""
+              },
+              {
+                "id": "yaml_var_doble",
+                "name": "doble",
+                "type": ""
+              },
+              {
+                "id": "yaml_var_resultado",
+                "name": "resultado",
+                "type": ""
+              },
+              {
+                "id": "yaml_var_total",
+                "name": "total",
+                "type": ""
+              }
+            ]
+          }
         },
         {
           "id": "funciones-ambito",
           "titulo": "Ámbito de las variables",
-          "explicacion": "La variable huevos existe fuera (vale 12) y dentro de cocinar() creamos OTRA huevos local (vale 2). Dentro de la función se ve la local; fuera, la global."
+          "explicacion": "La variable huevos existe fuera (vale 12) y dentro de cocinar() creamos OTRA huevos local (vale 2). Dentro de la función se ve la local; fuera, la global.",
+          "estado": {
+            "blocks": {
+              "languageVersion": 0,
+              "blocks": [
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_huevos"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "math_number",
+                        "fields": {
+                          "NUM": "12"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 24
+                },
+                {
+                  "type": "funcion_definir",
+                  "fields": {
+                    "NOMBRE": "cocinar",
+                    "PARAMS": ""
+                  },
+                  "inputs": {
+                    "DO": {
+                      "block": {
+                        "type": "variables_set",
+                        "fields": {
+                          "VAR": {
+                            "id": "yaml_var_huevos"
+                          }
+                        },
+                        "inputs": {
+                          "VALUE": {
+                            "block": {
+                              "type": "math_number",
+                              "fields": {
+                                "NUM": "2"
+                              }
+                            }
+                          }
+                        },
+                        "next": {
+                          "block": {
+                            "type": "mostrar",
+                            "inputs": {
+                              "VALOR": {
+                                "block": {
+                                  "type": "text_join",
+                                  "inputs": {
+                                    "ADD0": {
+                                      "block": {
+                                        "type": "text",
+                                        "fields": {
+                                          "TEXT": "En la cocina: "
+                                        }
+                                      }
+                                    },
+                                    "ADD1": {
+                                      "block": {
+                                        "type": "variables_get",
+                                        "fields": {
+                                          "VAR": {
+                                            "id": "yaml_var_huevos"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "extraState": {
+                                    "itemCount": 2
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 134
+                },
+                {
+                  "type": "funcion_llamar",
+                  "fields": {
+                    "NOMBRE": "cocinar"
+                  },
+                  "x": 24,
+                  "y": 244
+                },
+                {
+                  "type": "mostrar",
+                  "inputs": {
+                    "VALOR": {
+                      "block": {
+                        "type": "text_join",
+                        "inputs": {
+                          "ADD0": {
+                            "block": {
+                              "type": "text",
+                              "fields": {
+                                "TEXT": "En el programa principal: "
+                              }
+                            }
+                          },
+                          "ADD1": {
+                            "block": {
+                              "type": "variables_get",
+                              "fields": {
+                                "VAR": {
+                                  "id": "yaml_var_huevos"
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "extraState": {
+                          "itemCount": 2
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 354
+                }
+              ]
+            },
+            "variables": [
+              {
+                "id": "yaml_var_huevos",
+                "name": "huevos",
+                "type": ""
+              }
+            ]
+          }
         }
       ],
       "tests": [
@@ -328,31 +5260,229 @@
           "titulo": "¿Puede pasar?",
           "enunciado": "Define la función es_mayor_de_edad(edad) que devuelva True si edad es 18 o más y False si no. Después pide la edad, conviértela a número entero y muestra 'Puede pasar' si es_mayor_de_edad(edad) es verdadero.",
           "explicacion": "El usuario escribirá 20, así que es_mayor_de_edad(20) devuelve True y se muestra 'Puede pasar'. La llamada a la función va conectada como condición del bloque si.",
-          "entradas": ["20"],
-          "resultadoEsperado": ["Puede pasar"]
+          "entradas": [
+            "20"
+          ],
+          "resultadoEsperado": [
+            "Puede pasar"
+          ]
         },
         {
           "id": "funciones-calculadora",
           "titulo": "Mini calculadora",
           "enunciado": "Define cuatro funciones: sumar(a, b), restar(a, b), multiplicar(a, b) y dividir(a, b), cada una devolviendo su operación. Después pide dos números, conviértelos a entero y muestra el resultado de sumarlos, restarlos, multiplicarlos y dividirlos.",
           "explicacion": "El usuario escribirá 7 y 5: sumar da 12, restar 2, multiplicar 35 y dividir 1.4. Para dividir usa el bloque de división normal (/).",
-          "entradas": ["7", "5"],
-          "resultadoEsperado": ["12", "2", "35", "1.4"]
+          "entradas": [
+            "7",
+            "5"
+          ],
+          "resultadoEsperado": [
+            "12",
+            "2",
+            "35",
+            "1.4"
+          ]
         },
         {
           "id": "funciones-collatz",
           "titulo": "Conjetura de Collatz",
           "enunciado": "Ya tienes numero = 6. Define collatz(n): muestra n; si el resto de n entre 2 es 0, devuelve n // 2; si no, devuelve n * 3 + 1. Después repite con un bucle mientras (mientras numero sea distinto de 1) asignando a numero el resultado de collatz(numero). Al salir del bucle, muestra numero.",
           "explicacion": "Desde el 6 la secuencia es 6 → 3 → 10 → 5 → 16 → 8 → 4 → 2 → 1. La función muestra cada valor al entrar y el programa final muestra el último 1.",
-          "resultadoEsperado": ["6", "3", "10", "5", "16", "8", "4", "2", "1"]
+          "resultadoEsperado": [
+            "6",
+            "3",
+            "10",
+            "5",
+            "16",
+            "8",
+            "4",
+            "2",
+            "1"
+          ],
+          "estado": {
+            "blocks": {
+              "languageVersion": 0,
+              "blocks": [
+                {
+                  "type": "variables_set",
+                  "fields": {
+                    "VAR": {
+                      "id": "yaml_var_numero"
+                    }
+                  },
+                  "inputs": {
+                    "VALUE": {
+                      "block": {
+                        "type": "math_number",
+                        "fields": {
+                          "NUM": "6"
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 24
+                }
+              ]
+            },
+            "variables": [
+              {
+                "id": "yaml_var_numero",
+                "name": "numero",
+                "type": ""
+              }
+            ]
+          }
         },
         {
           "id": "funciones-password",
           "titulo": "Fortaleza de contraseña",
           "enunciado": "Ya tienes tres funciones: verificarLongitud(pwd), verificarMayuscula(pwd) y verificarNumero(pwd), que devuelven True o False. Define analizarFortaleza(pwd) que devuelva 'Contraseña Fuerte' si se cumplen las tres a la vez (combínalas con bloques Y) y 'Contraseña Débil' si no. Después pide una contraseña y muestra el resultado de analizarFortaleza(contraseña) y también de analizarFortaleza('abc').",
           "explicacion": "El usuario escribirá 'Programacion3': tiene 13 caracteres, mayúscula y número, así que es fuerte. 'abc' falla las tres comprobaciones y es débil.",
-          "entradas": ["Programacion3"],
-          "resultadoEsperado": ["Contraseña Fuerte", "Contraseña Débil"]
+          "entradas": [
+            "Programacion3"
+          ],
+          "resultadoEsperado": [
+            "Contraseña Fuerte",
+            "Contraseña Débil"
+          ],
+          "estado": {
+            "blocks": {
+              "languageVersion": 0,
+              "blocks": [
+                {
+                  "type": "funcion_definir",
+                  "fields": {
+                    "NOMBRE": "verificarLongitud",
+                    "PARAMS": "pwd"
+                  },
+                  "inputs": {
+                    "DO": {
+                      "block": {
+                        "type": "devolver",
+                        "inputs": {
+                          "VALOR": {
+                            "block": {
+                              "type": "logic_compare",
+                              "fields": {
+                                "OP": "GTE"
+                              },
+                              "inputs": {
+                                "A": {
+                                  "block": {
+                                    "type": "text_length",
+                                    "inputs": {
+                                      "VALUE": {
+                                        "block": {
+                                          "type": "variables_get",
+                                          "fields": {
+                                            "VAR": {
+                                              "id": "yaml_var_pwd"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "B": {
+                                  "block": {
+                                    "type": "math_number",
+                                    "fields": {
+                                      "NUM": "8"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 24
+                },
+                {
+                  "type": "funcion_definir",
+                  "fields": {
+                    "NOMBRE": "verificarMayuscula",
+                    "PARAMS": "pwd"
+                  },
+                  "inputs": {
+                    "DO": {
+                      "block": {
+                        "type": "devolver",
+                        "inputs": {
+                          "VALOR": {
+                            "block": {
+                              "type": "text_tiene_mayuscula",
+                              "inputs": {
+                                "TEXTO": {
+                                  "block": {
+                                    "type": "variables_get",
+                                    "fields": {
+                                      "VAR": {
+                                        "id": "yaml_var_pwd"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 134
+                },
+                {
+                  "type": "funcion_definir",
+                  "fields": {
+                    "NOMBRE": "verificarNumero",
+                    "PARAMS": "pwd"
+                  },
+                  "inputs": {
+                    "DO": {
+                      "block": {
+                        "type": "devolver",
+                        "inputs": {
+                          "VALOR": {
+                            "block": {
+                              "type": "text_tiene_numero",
+                              "inputs": {
+                                "TEXTO": {
+                                  "block": {
+                                    "type": "variables_get",
+                                    "fields": {
+                                      "VAR": {
+                                        "id": "yaml_var_pwd"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": 24,
+                  "y": 244
+                }
+              ]
+            },
+            "variables": [
+              {
+                "id": "yaml_var_pwd",
+                "name": "pwd",
+                "type": ""
+              }
+            ]
+          }
         }
       ]
     }

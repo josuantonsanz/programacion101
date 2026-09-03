@@ -1,0 +1,228 @@
+capitulo:
+  id: cadenas
+  numero: 4
+  titulo: Cadenas
+  resumen: 'Trabajar con texto: acceder a caracteres, extraer partes, transformar mayúsculas y minúsculas, buscar, reemplazar y comprobar contenidos.'
+  bloques:
+  - variables_set
+  - variables_get
+  - text
+  - text_join
+  - text_length
+  - text_repetir
+  - text_char
+  - text_slice
+  - text_transformar
+  - text_buscar
+  - text_reemplazar
+  - text_contiene
+  - text_tiene_mayuscula
+  - text_tiene_numero
+  - math_number
+  - pedir
+  - convertir
+  - mostrar
+  - tipo_de
+  ejemplos:
+  - id: cadenas-indexacion
+    titulo: Acceder a caracteres (índices)
+    explicacion: 'Cada carácter tiene una posición: la primera es la 0. Con índices negativos contamos desde el final (-1 es el último). Mostramos la P (posición 0), la H (posición 3) y la N (posición -1) de ''PYTHON''.'
+    programa:
+    - asignar:
+        variable: palabra
+        valor:
+          texto: PYTHON
+    - mostrar:
+        caracter:
+          texto:
+            variable: palabra
+          posicion:
+            numero: 0
+    - mostrar:
+        caracter:
+          texto:
+            variable: palabra
+          posicion:
+            numero: 3
+    - mostrar:
+        caracter:
+          texto:
+            variable: palabra
+          posicion:
+            numero: -1
+  - id: cadenas-slicing
+    titulo: Extraer partes de un texto
+    explicacion: 'Con palabra[inicio:hasta] extraemos un trozo: PYT (de 0 a 3), THO (de 2 a 5) y HON (desde la 3 hasta el final). El carácter ''hasta'' NO se incluye.'
+    programa:
+    - asignar:
+        variable: palabra
+        valor:
+          texto: PYTHON
+    - mostrar:
+        parte_texto:
+          texto:
+            variable: palabra
+          inicio:
+            numero: 0
+          fin:
+            numero: 3
+    - mostrar:
+        parte_texto:
+          texto:
+            variable: palabra
+          inicio:
+            numero: 2
+          fin:
+            numero: 5
+    - mostrar:
+        parte_texto:
+          texto:
+            variable: palabra
+          inicio:
+            numero: 3
+  - id: cadenas-transformar
+    titulo: Mayúsculas, minúsculas y espacios
+    explicacion: 'Los métodos upper(), capitalize(), title() y strip() transforman el texto: ''josu'' → ''JOSU'' y ''Josu''; el título sale con mayúscula inicial en cada palabra y strip() elimina los espacios de alrededor.'
+    programa:
+    - asignar:
+        variable: nombre
+        valor:
+          texto: josu
+    - mostrar:
+        transformar:
+          metodo: mayusculas
+          texto:
+            variable: nombre
+    - mostrar:
+        transformar:
+          metodo: capitalizar
+          texto:
+            variable: nombre
+    - asignar:
+        variable: titulo
+        valor:
+          texto: aprendiendo a programar
+    - mostrar:
+        transformar:
+          metodo: titulo
+          texto:
+            variable: titulo
+    - asignar:
+        variable: espaciado
+        valor:
+          texto: '  josu  '
+    - mostrar:
+        transformar:
+          metodo: sin_espacios
+          texto:
+            variable: espaciado
+  - id: cadenas-buscar-reemplazar
+    titulo: Buscar y reemplazar
+    explicacion: 'find() devuelve la posición de la primera aparición: el @ de ''correo@dominio.com'' está en la posición 6. replace() cambia todas las apariciones: ''aburrido'' → ''divertido''.'
+    programa:
+    - asignar:
+        variable: email
+        valor:
+          texto: correo@dominio.com
+    - mostrar:
+        buscar:
+          texto:
+            variable: email
+          buscar:
+            texto: '@'
+    - asignar:
+        variable: frase
+        valor:
+          texto: Python es aburrido
+    - mostrar:
+        reemplazar:
+          texto:
+            variable: frase
+          viejo:
+            texto: aburrido
+          nuevo:
+            texto: divertido
+  - id: cadenas-pertenencia
+    titulo: ¿Está dentro? (operador in)
+    explicacion: 'El operador in comprueba si un texto está dentro de otro: ''zorro'' está en ''El zorro salta'' (True) pero ''gato'' no (False).'
+    programa:
+    - asignar:
+        variable: frase
+        valor:
+          texto: El zorro salta
+    - mostrar:
+        contiene_texto:
+          subtexto:
+            texto: zorro
+          en:
+            variable: frase
+    - mostrar:
+        contiene_texto:
+          subtexto:
+            texto: gato
+          en:
+            variable: frase
+  - id: cadenas-nueva-cadena
+    titulo: Las cadenas no se modifican
+    explicacion: 'Las cadenas son inmutables: no se pueden cambiar, solo crear otras nuevas. Cogemos la ''j'' y el trozo ''osu'' de ''josue'' y los unimos para formar ''josu''; la variable original sigue intacta.'
+    programa:
+    - asignar:
+        variable: nombre
+        valor:
+          texto: josue
+    - asignar:
+        variable: apodo
+        valor:
+          unir:
+          - caracter:
+              texto:
+                variable: nombre
+              posicion:
+                numero: 0
+          - parte_texto:
+              texto:
+                variable: nombre
+              inicio:
+                numero: 1
+              fin:
+                numero: 4
+    - mostrar:
+        variable: apodo
+    - mostrar:
+        variable: nombre
+  tests:
+  - id: cadenas-primera-ultima
+    titulo: Primera y última letra
+    enunciado: Pide una palabra con pedir y muestra su primera letra (posición 0) y después su última letra (posición -1).
+    explicacion: 'El usuario escribirá ''Python''. Usa el bloque carácter dos veces: carácter 0 de la palabra y carácter -1 de la palabra.'
+    entradas:
+    - Python
+    resultadoEsperado:
+    - P
+    - n
+  - id: cadenas-email
+    titulo: Partes de un correo
+    enunciado: Pide un correo electrónico con pedir. Muestra la parte que hay antes de la @ (desde el principio hasta la posición de la @) y la parte que hay después (desde la posición siguiente a la @ hasta el final).
+    explicacion: 'El usuario escribirá ''nombre.apellido@gmail.com''. Busca la posición de ''@'' con el bloque posición de: da 15. El primer trozo es texto[0:15] y el segundo texto[16:].'
+    entradas:
+    - nombre.apellido@gmail.com
+    resultadoEsperado:
+    - nombre.apellido
+    - gmail.com
+  - id: cadenas-censor
+    titulo: Censurar una palabra
+    enunciado: Pide una frase y una palabra con pedir. Muestra la frase con todas las apariciones de esa palabra reemplazadas por '[CENSURADO]'.
+    explicacion: El usuario escribirá la frase 'Python es aburrido' y después la palabra 'aburrido'. Usa el bloque reemplazar sobre la frase.
+    entradas:
+    - Python es aburrido
+    - aburrido
+    resultadoEsperado:
+    - Python es [CENSURADO]
+  - id: cadenas-formateador
+    titulo: Formatear un nombre
+    enunciado: Pide un nombre completo con pedir (puede llevar espacios alrededor y minúsculas). Muestra '¡Bienvenido, ' + el nombre sin espacios y con cada palabra en mayúscula inicial + '!'
+    explicacion: El usuario escribirá '  ana martinez  '. Quita los espacios con sin espacios alrededor, pon en formato título y únelo con el saludo usando el bloque unir.
+    entradas:
+    - '  ana martinez  '
+    resultadoEsperado:
+    - ¡Bienvenido, Ana Martinez!

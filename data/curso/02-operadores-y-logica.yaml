@@ -1,0 +1,151 @@
+capitulo:
+  id: operadores-y-logica
+  numero: 2
+  titulo: Operadores y lógica
+  resumen: Funciones internas (longitud, tipo), operadores avanzados (potencia, división entera, resto) y operadores de comparación y lógicos.
+  bloques:
+  - variables_set
+  - variables_get
+  - math_number
+  - math_arithmetic
+  - operacion_extra
+  - math_single
+  - text_length
+  - logic_compare
+  - logic_operation
+  - logic_negate
+  - logic_boolean
+  - mostrar
+  - tipo_de
+  ejemplos:
+  - id: variables-funciones-estandar
+    titulo: Funciones internas
+    explicacion: Usamos funciones ya incorporadas en Python (raíz cuadrada, longitud de texto) sobre el valor guardado en una variable.
+    programa:
+    - asignar:
+        variable: numero
+        valor:
+          numero: 16
+    - mostrar:
+        texto: 'Raíz cuadrada de 16:'
+    - mostrar:
+        raiz:
+          variable: numero
+    - asignar:
+        variable: palabra
+        valor:
+          texto: Programación
+    - mostrar:
+        texto: 'Longitud de "Programación":'
+    - mostrar:
+        longitud:
+          variable: palabra
+  - id: operadores-avanzados
+    titulo: Potencia, división entera y resto
+    explicacion: 'Probamos los operadores avanzados: 3 elevado a 2, la división entera de 7 entre 2 y el resto de 7 entre 2.'
+    programa:
+    - mostrar:
+        operacion:
+          valores:
+          - numero: 3
+          - numero: 2
+          operador: POW
+    - mostrar:
+        operacion:
+          valores:
+          - numero: 7
+          - numero: 2
+          operador: DIV_INT
+    - mostrar:
+        operacion:
+          valores:
+          - numero: 7
+          - numero: 2
+          operador: MOD
+  - id: logica-comparar-numeros
+    titulo: Comparar dos números
+    explicacion: Guardamos dos números y mostramos el resultado de compararlos (mayor que, igual que).
+    programa:
+    - asignar:
+        variable: a
+        valor:
+          numero: 7
+    - asignar:
+        variable: b
+        valor:
+          numero: 3
+    - mostrar:
+        comparar:
+          izquierda:
+            variable: a
+          operador: GT
+          derecha:
+            variable: b
+    - mostrar:
+        comparar:
+          izquierda:
+            variable: a
+          operador: EQ
+          derecha:
+            variable: b
+  - id: operadores-logicos
+    titulo: Operadores lógicos (y, o, no)
+    explicacion: 'Combinamos condiciones con ''y'' y ''o'', y negamos una con ''no'': ¿puede pasar al concierto? ¿puede dormir hasta tarde? ¿llueve?'
+    programa:
+    - asignar:
+        variable: edad
+        valor:
+          numero: 25
+    - asignar:
+        variable: tieneEntrada
+        valor:
+          booleano: true
+    - asignar:
+        variable: puedePasar
+        valor:
+          logica:
+            izquierda:
+              comparar:
+                izquierda:
+                  variable: edad
+                operador: GTE
+                derecha:
+                  numero: 18
+            operador: AND
+            derecha:
+              variable: tieneEntrada
+    - mostrar:
+        variable: puedePasar
+    - asignar:
+        variable: esFinDeSemana
+        valor:
+          booleano: true
+    - asignar:
+        variable: estaDeVacaciones
+        valor:
+          booleano: false
+    - asignar:
+        variable: puedeDormir
+        valor:
+          logica:
+            izquierda:
+              variable: esFinDeSemana
+            operador: OR
+            derecha:
+              variable: estaDeVacaciones
+    - mostrar:
+        variable: puedeDormir
+    - asignar:
+        variable: llueve
+        valor:
+          booleano: false
+    - mostrar:
+        'no':
+          variable: llueve
+  tests:
+  - id: longitud-de-frase
+    titulo: Longitud de una frase
+    enunciado: Crea una variable frase = "Hola mundo" y muestra su longitud (el espacio también cuenta).
+    explicacion: Usa el bloque de longitud de texto sobre la variable. "Hola mundo" tiene 10 caracteres.
+    resultadoEsperado:
+    - '10'

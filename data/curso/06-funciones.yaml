@@ -1,0 +1,225 @@
+capitulo:
+  id: funciones
+  numero: 6
+  titulo: Funciones
+  resumen: 'Crear funciones propias para reutilizar código: definirlas con parámetros, llamarlas, devolver valores con return y entender el ámbito de las variables.'
+  bloques:
+  - variables_set
+  - variables_get
+  - text
+  - text_join
+  - text_length
+  - text_tiene_mayuscula
+  - text_tiene_numero
+  - math_number
+  - math_arithmetic
+  - operacion_extra
+  - logic_compare
+  - logic_operation
+  - logic_boolean
+  - controls_if
+  - controls_whileUntil
+  - funcion_definir
+  - funcion_llamar
+  - devolver
+  - pedir
+  - convertir
+  - mostrar
+  - tipo_de
+  ejemplos:
+  - id: funciones-saludar
+    titulo: Definir y llamar una función
+    explicacion: 'Definimos la función saludar() que muestra un saludo, y luego la llamamos dos veces: cada llamada ejecuta su cuerpo. El programa principal va después de la definición.'
+    programa:
+    - definir_funcion:
+        nombre: saludar
+        parametros: []
+        hacer:
+        - mostrar:
+            texto: ¡Hola! Me llamo Python.
+    - mostrar:
+        texto: 'Vamos a saludar:'
+    - llamar:
+        nombre: saludar
+        argumentos: []
+    - llamar:
+        nombre: saludar
+        argumentos: []
+    - mostrar:
+        texto: ¡Fin del programa!
+  - id: funciones-parametros
+    titulo: Funciones con parámetros
+    explicacion: 'saludarA(nombre) recibe un parámetro y lo usa dentro. Llamamos a la función con ''Ana'' y con ''Marcos'': el mismo código, distinto resultado.'
+    programa:
+    - definir_funcion:
+        nombre: saludarA
+        parametros:
+        - nombre
+        hacer:
+        - mostrar:
+            unir:
+            - texto: '¡Hola, '
+            - variable: nombre
+            - texto: '!'
+    - llamar:
+        nombre: saludarA
+        argumentos:
+        - texto: Ana
+    - llamar:
+        nombre: saludarA
+        argumentos:
+        - texto: Marcos
+  - id: funciones-return
+    titulo: Devolver valores con return
+    explicacion: sumar(a, b) calcula y DEVUELVE el resultado con devolver, así que podemos guardarlo en una variable o usarlo en una operación. Una función sin devolver devuelve None.
+    programa:
+    - definir_funcion:
+        nombre: sumar
+        parametros:
+        - a
+        - b
+        hacer:
+        - asignar:
+            variable: resultado
+            valor:
+              sumar:
+              - variable: a
+              - variable: b
+        - devolver:
+            variable: resultado
+    - asignar:
+        variable: total
+        valor:
+          llamar:
+            nombre: sumar
+            argumentos:
+            - numero: 3
+            - numero: 4
+    - mostrar:
+        variable: total
+    - asignar:
+        variable: doble
+        valor:
+          multiplicar:
+          - llamar:
+              nombre: sumar
+              argumentos:
+              - numero: 5
+              - numero: 2
+          - numero: 2
+    - mostrar:
+        variable: doble
+    - definir_funcion:
+        nombre: funcionVacia
+        parametros: []
+        hacer: []
+    - mostrar:
+        llamar:
+          nombre: funcionVacia
+          argumentos: []
+  - id: funciones-ambito
+    titulo: Ámbito de las variables
+    explicacion: La variable huevos existe fuera (vale 12) y dentro de cocinar() creamos OTRA huevos local (vale 2). Dentro de la función se ve la local; fuera, la global.
+    programa:
+    - asignar:
+        variable: huevos
+        valor:
+          numero: 12
+    - definir_funcion:
+        nombre: cocinar
+        parametros: []
+        hacer:
+        - asignar:
+            variable: huevos
+            valor:
+              numero: 2
+        - mostrar:
+            unir:
+            - texto: 'En la cocina: '
+            - variable: huevos
+    - llamar:
+        nombre: cocinar
+        argumentos: []
+    - mostrar:
+        unir:
+        - texto: 'En el programa principal: '
+        - variable: huevos
+  tests:
+  - id: funciones-validar-edad
+    titulo: ¿Puede pasar?
+    enunciado: Define la función es_mayor_de_edad(edad) que devuelva True si edad es 18 o más y False si no. Después pide la edad, conviértela a número entero y muestra 'Puede pasar' si es_mayor_de_edad(edad) es verdadero.
+    explicacion: El usuario escribirá 20, así que es_mayor_de_edad(20) devuelve True y se muestra 'Puede pasar'. La llamada a la función va conectada como condición del bloque si.
+    entradas:
+    - '20'
+    resultadoEsperado:
+    - Puede pasar
+  - id: funciones-calculadora
+    titulo: Mini calculadora
+    enunciado: 'Define cuatro funciones: sumar(a, b), restar(a, b), multiplicar(a, b) y dividir(a, b), cada una devolviendo su operación. Después pide dos números, conviértelos a entero y muestra el resultado de sumarlos, restarlos, multiplicarlos y dividirlos.'
+    explicacion: 'El usuario escribirá 7 y 5: sumar da 12, restar 2, multiplicar 35 y dividir 1.4. Para dividir usa el bloque de división normal (/).'
+    entradas:
+    - '7'
+    - '5'
+    resultadoEsperado:
+    - '12'
+    - '2'
+    - '35'
+    - '1.4'
+  - id: funciones-collatz
+    titulo: Conjetura de Collatz
+    enunciado: 'Ya tienes numero = 6. Define collatz(n): muestra n; si el resto de n entre 2 es 0, devuelve n // 2; si no, devuelve n * 3 + 1. Después repite con un bucle mientras (mientras numero sea distinto de 1) asignando a numero el resultado de collatz(numero). Al salir del bucle, muestra numero.'
+    explicacion: Desde el 6 la secuencia es 6 → 3 → 10 → 5 → 16 → 8 → 4 → 2 → 1. La función muestra cada valor al entrar y el programa final muestra el último 1.
+    resultadoEsperado:
+    - '6'
+    - '3'
+    - '10'
+    - '5'
+    - '16'
+    - '8'
+    - '4'
+    - '2'
+    - '1'
+    programa:
+    - asignar:
+        variable: numero
+        valor:
+          numero: 6
+  - id: funciones-password
+    titulo: Fortaleza de contraseña
+    enunciado: 'Ya tienes tres funciones: verificarLongitud(pwd), verificarMayuscula(pwd) y verificarNumero(pwd), que devuelven True o False. Define analizarFortaleza(pwd) que devuelva ''Contraseña Fuerte'' si se cumplen las tres a la vez (combínalas con bloques Y) y ''Contraseña Débil'' si no. Después pide una contraseña y muestra el resultado de analizarFortaleza(contraseña) y también de analizarFortaleza(''abc'').'
+    explicacion: 'El usuario escribirá ''Programacion3'': tiene 13 caracteres, mayúscula y número, así que es fuerte. ''abc'' falla las tres comprobaciones y es débil.'
+    entradas:
+    - Programacion3
+    resultadoEsperado:
+    - Contraseña Fuerte
+    - Contraseña Débil
+    programa:
+    - definir_funcion:
+        nombre: verificarLongitud
+        parametros:
+        - pwd
+        hacer:
+        - devolver:
+            comparar:
+              izquierda:
+                longitud:
+                  variable: pwd
+              operador: GTE
+              derecha:
+                numero: 8
+    - definir_funcion:
+        nombre: verificarMayuscula
+        parametros:
+        - pwd
+        hacer:
+        - devolver:
+            tiene_mayuscula:
+              variable: pwd
+    - definir_funcion:
+        nombre: verificarNumero
+        parametros:
+        - pwd
+        hacer:
+        - devolver:
+            tiene_numero:
+              variable: pwd
