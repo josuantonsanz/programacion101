@@ -149,6 +149,44 @@ const workspace = Blockly.inject('blocklyDiv', {
 window.addEventListener('resize', () => Blockly.svgResize(workspace));
 
 // =================================================================
+// 3.5 SELECTOR DE ESTILO
+// =================================================================
+// Mantiene la elección entre visitas y activa solamente las hojas necesarias:
+// Pico + diseño sobrio, o la apariencia de pizarra original. Se usa `media`
+// para seleccionar de forma explícita qué hojas participan en la cascada.
+const selectorEstilo = document.getElementById('selectorEstilo');
+const basePico = document.getElementById('basePico');
+const estiloSobrio = document.getElementById('estiloSobrio');
+const estiloPizarra = document.getElementById('estiloPizarra');
+
+function activarHojaDeEstilo(hoja, activa) {
+  // Las tres hojas se cargan sin el atributo `disabled`. `not all` impide que
+  // sus reglas participen en la cascada y cambiarlo a `all` es fiable.
+  hoja.disabled = false;
+  hoja.media = activa ? 'all' : 'not all';
+}
+
+function aplicarEstilo(nombre) {
+  const esPizarra = nombre === 'pizarra';
+  activarHojaDeEstilo(basePico, !esPizarra);
+  activarHojaDeEstilo(estiloSobrio, !esPizarra);
+  activarHojaDeEstilo(estiloPizarra, esPizarra);
+  selectorEstilo.value = esPizarra ? 'pizarra' : 'sobrio';
+  document.documentElement.dataset.estilo = selectorEstilo.value;
+
+  try { localStorage.setItem('estiloBloques', selectorEstilo.value); }
+  catch (e) { /* La página sigue funcionando si el almacenamiento está bloqueado. */ }
+
+  requestAnimationFrame(() => Blockly.svgResize(workspace));
+}
+
+let estiloGuardado = 'sobrio';
+try { estiloGuardado = localStorage.getItem('estiloBloques') || 'sobrio'; }
+catch (e) { /* Usar el estilo sobrio por defecto. */ }
+aplicarEstilo(estiloGuardado);
+selectorEstilo.addEventListener('change', () => aplicarEstilo(selectorEstilo.value));
+
+// =================================================================
 // 4. NAVEGACIÓN: temario → capítulo → ejemplo/test
 // =================================================================
 let capituloActual = null;
@@ -252,10 +290,64 @@ function seleccionarContenido(tipo, indice) {
 // =================================================================
 // 5. CÓDIGO GENERADO / EJECUCIÓN / COMPROBACIÓN
 // =================================================================
+// Blockly añade al inicio una asignación `variable = None` por cada variable
+// del espacio. Es útil para su generador, pero distrae al leer el programa.
+// Solo se elimina ese bloque inicial; una asignación a None creada por el
+// alumnado, que aparece después, se conserva.
+function ocultarDeclaracionesInicialesDeBlockly(codigo) {
+  const lineas = codigo.split(/\r?\n/);
+  const esDeclaracion = /^[\p{L}_][\p{L}\p{N}_]* = None$/u;
+  let posicion = 0;
+
+  while (posicion < lineas.length && !lineas[posicion].trim()) posicion++;
+  const inicioDeclaraciones = posicion;
+  while (posicion < lineas.length && esDeclaracion.test(lineas[posicion])) posicion++;
+
+  if (posicion === inicioDeclaraciones) return codigo.trim();
+  while (posicion < lineas.length && !lineas[posicion].trim()) posicion++;
+  return lineas.slice(posicion).join('\n').trim();
+}
+
+function escaparHTML(texto) {
+  return texto.replace(/[&<>"']/g, caracter => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  })[caracter]);
+}
+
+// Resaltado ligero y local: no incorpora otra dependencia ni interpreta el
+// código como HTML. Cubre el Python que genera Blockly (comentarios, cadenas,
+// palabras reservadas, funciones incorporadas y números).
+const patronPython = /((?:br|rb|fr|rf|r|u|b|f)?(?:"(?:\\.|[^"\\\r\n])*"|'(?:\\.|[^'\\\r\n])*'))|(#[^\r\n]*)|\b(and|as|assert|async|await|break|case|class|continue|def|del|elif|else|except|False|finally|for|from|global|if|import|in|is|lambda|match|None|nonlocal|not|or|pass|raise|return|True|try|while|with|yield)\b|\b(bool|dict|enumerate|float|input|int|len|list|max|min|print|range|set|sorted|str|sum|tuple|type|zip)\b|\b(0[xob][0-9a-f_]+|\d[\d_]*(?:\.[\d_]*)?(?:e[+-]?[\d_]+)?j?)\b/gi;
+
+function resaltarPython(codigo) {
+  let hasta = 0;
+  let resultado = '';
+
+  // No se usa String#replace aquí: esa API conserva automáticamente el texto
+  // no coincidente. Como ya añadimos ese texto escapado entre coincidencias,
+  // usarla duplicaría fragmentos como `a = a = 10`.
+  for (const coincidencia of codigo.matchAll(patronPython)) {
+    const [texto, cadena, comentario, palabra, funcion] = coincidencia;
+    const posicion = coincidencia.index;
+    resultado += escaparHTML(codigo.slice(hasta, posicion));
+    const clase = cadena ? 'py-cadena'
+      : comentario ? 'py-comentario'
+        : palabra ? 'py-palabra'
+          : funcion ? 'py-funcion' : 'py-numero';
+    resultado += '<span class="' + clase + '">' + escaparHTML(texto) + '</span>';
+    hasta = posicion + texto.length;
+  }
+  return resultado + escaparHTML(codigo.slice(hasta));
+}
+
+function mostrarCodigoPython(codigo) {
+  const codigoVisible = ocultarDeclaracionesInicialesDeBlockly(codigo) || '# (espacio de trabajo vacío)';
+  document.getElementById('codigoGenerado').innerHTML = resaltarPython(codigoVisible);
+}
+
 function actualizarCodigo() {
   try {
-    const code = Blockly.Python.workspaceToCode(workspace);
-    document.getElementById('codigoGenerado').textContent = code.trim() || '# (espacio de trabajo vacío)';
+    mostrarCodigoPython(Blockly.Python.workspaceToCode(workspace));
   } catch (e) { /* ignorar mientras el usuario edita */ }
 }
 workspace.addChangeListener(() => actualizarCodigo());
@@ -268,7 +360,7 @@ document.getElementById('btnEjecutar').addEventListener('click', () => {
   let codigoPython;
   try { codigoPython = Blockly.Python.workspaceToCode(workspace); }
   catch (e) { consola.innerHTML = '<span class="linea-error">⚠️ No se pudo generar el código: ' + e.message + '</span>'; return; }
-  document.getElementById('codigoGenerado').textContent = codigoPython.trim() || '# (espacio de trabajo vacío)';
+  mostrarCodigoPython(codigoPython);
 
   let codigoJS;
   try { codigoJS = Blockly.JavaScript.workspaceToCode(workspace); }

@@ -47,7 +47,8 @@ explicativo si la carga falla.
 bloques-programacion/
 ├── index.html            → estructura HTML, enlaces a CSS/JS, scripts de Blockly (CDN)
 ├── css/
-│   └── estilos.css       → todo el CSS (sin estilos inline en el HTML)
+│   ├── estilos-pico.css  → diseño sobrio actual (ajustes sobre Pico CSS, cargado por CDN)
+│   └── estilos.css       → diseño de pizarra anterior, conservado como referencia
 ├── js/
 │   ├── bloques.js        → bloques personalizados, registro de bloques, toolbox
 │   ├── constructores.js  → helpers de montaje + CONSTRUCTORES (id → función)

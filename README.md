@@ -21,6 +21,8 @@ usar IA y sin instalar nada**.
 - 🐍 **Código Python en vivo** junto al espacio de trabajo.
 - 🛠️ **Panel del profesor**: exporta el estado del espacio como JSON para crear
   ejercicios nuevos sin programar.
+- 🎨 **Dos estilos visuales**: selector en la cabecera entre el diseño sobrio
+  con Pico CSS y la estética de pizarra original; la elección se recuerda.
 - 📁 **Contenido 100% editable en JSON** (`data/temario.json`): añadir un tema
   no requiere tocar JavaScript.
 
@@ -32,7 +34,8 @@ usar IA y sin instalar nada**.
 bloques-programacion/
 ├── index.html              → la página (estructura HTML + carga de scripts)
 ├── css/
-│   └── estilos.css         → todos los estilos (pizarra, consola, botones…)
+│   ├── estilos-pico.css    → diseño sobrio actual (ajustes sobre Pico CSS)
+│   └── estilos.css         → diseño anterior de pizarra (conservado como referencia)
 ├── js/
 │   ├── bloques.js          → bloques propios + registro de bloques + toolbox
 │   ├── constructores.js    → funciones que montan bloques, asociadas por id
@@ -51,8 +54,8 @@ bloques-programacion/
 ## Requisitos
 
 - Un navegador moderno (Chrome, Edge, Firefox, Safari).
-- **Conexión a internet** en el aula: Blockly se carga desde un CDN
-  (cdnjs). Si quieres usarlo sin red, ver [Sin conexión a internet](#sin-conexión-a-internet).
+- **Conexión a internet** en el aula: Blockly y la base visual Pico CSS se
+  cargan desde CDN. Si quieres usarlo sin red, ver [Sin conexión a internet](#sin-conexión-a-internet).
 
 ---
 
@@ -239,15 +242,19 @@ Para añadir un tipo nuevo: defínelo como bloque de Blockly en `js/bloques.js`
 
 ## Sin conexión a internet
 
-Blockly se carga desde el CDN de cdnjs. Para usarlo sin red:
+Blockly se carga desde el CDN de cdnjs y Pico CSS desde jsDelivr. Para usarlo
+sin red:
 
 1. Descarga estos cinco archivos desde cdnjs (versión `12.5.1`):
    `blockly_compressed.min.js`, `blocks_compressed.min.js`,
    `javascript_compressed.min.js`, `python_compressed.min.js`,
    `msg/es.min.js`.
-2. Guárdalos en `assets/`.
-3. En `index.html`, sustituye las etiquetas `<script>` del CDN por rutas
-   locales: `src="assets/blockly_compressed.min.js"`, etc.
+2. Descarga también `pico.min.css` de Pico CSS (versión `2.1.1`).
+3. Guarda los archivos en `assets/` (puedes crear `assets/css/` para
+   `pico.min.css`).
+4. En `index.html`, sustituye las etiquetas del CDN por rutas locales: por
+   ejemplo, `href="assets/css/pico.min.css"` y
+   `src="assets/blockly_compressed.min.js"`, etc.
 
 ---
 

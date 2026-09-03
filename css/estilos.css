@@ -201,6 +201,11 @@ main{
   font-size: 13.5px; line-height: 1.55; border-radius: 10px; padding: 14px;
   min-height: 160px; max-height: 260px; overflow: auto; white-space: pre-wrap;
 }
+.codigo .py-comentario{ color:#82988a; font-style:italic; }
+.codigo .py-palabra{ color:#d69ce7; font-weight:600; }
+.codigo .py-funcion{ color:#74d6e8; }
+.codigo .py-cadena{ color:#f1c878; }
+.codigo .py-numero{ color:#f19d73; }
 
 .sub-label{
   font-size: 12px; font-weight:800; text-transform:uppercase; letter-spacing:.08em;
@@ -220,3 +225,21 @@ main{
 .panel-profesor code{ background:#eee; padding:1px 5px; border-radius:4px; }
 
 footer{ padding: 0 24px 40px; color:#6b7268; font-size:13.5px; }
+
+/* Selector para alternar entre esta estética y la variante sobria. */
+.selector-estilo{
+  position:absolute; right:24px; top:20px; z-index:2;
+  display:flex; align-items:center; gap:8px;
+  color:var(--tiza-tenue); font-size:13px; font-weight:700;
+}
+.selector-estilo label{ margin:0; }
+.selector-estilo select{
+  min-width:112px; height:34px; padding:4px 8px;
+  border:1px solid var(--tiza-tenue); border-radius:6px;
+  background:var(--pizarra); color:var(--tiza); font:inherit;
+}
+@media (max-width:700px){
+  .selector-estilo{
+    position:static; justify-content:flex-end; margin-bottom:16px;
+  }
+}

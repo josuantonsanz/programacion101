@@ -5,7 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aprende a programar con bloques</title>
 
-<link rel="stylesheet" href="css/estilos.css">
+<!-- Pico aporta una base tipográfica y de formularios discreta. -->
+<link id="basePico" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.1.1/css/pico.min.css">
+<link id="estiloSobrio" rel="stylesheet" href="css/estilos-pico.css?v=2" media="all">
+<link id="estiloPizarra" rel="stylesheet" href="css/estilos.css?v=2" media="not all">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/blockly/12.5.1/blockly_compressed.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/blockly/12.5.1/blocks_compressed.min.js"></script>
@@ -16,6 +19,13 @@
 <body>
 
 <header>
+  <div class="selector-estilo">
+    <label for="selectorEstilo">Estilo</label>
+    <select id="selectorEstilo" aria-label="Seleccionar estilo visual">
+      <option value="sobrio">Sobrio</option>
+      <option value="pizarra">Pizarra</option>
+    </select>
+  </div>
   <span class="eyebrow">Primer curso · Fundamentos de programación</span>
   <h1>Aprende a programar con bloques</h1>
   <p>Elige un tema, después un ejemplo montado o un ejercicio para resolver tú mismo. El código se muestra en Python; el resultado se calcula al instante en el navegador.</p>
@@ -89,6 +99,6 @@
 
 <script src="js/bloques.js"></script>
 <script src="js/constructores.js"></script>
-<script src="js/app.js"></script>
+<script src="js/app.js?v=2"></script>
 </body>
 </html>
