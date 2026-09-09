@@ -24,16 +24,18 @@ function mostrar(valor) {
   if (capturaActiva) capturaActiva.push(texto);
   escribirEnConsola(texto);
 }
+// El bloque genera type() en el Python visible. Como se ejecuta su
+// equivalente en JavaScript, reproducimos aquí la representación que print()
+// mostraría en Python (por ejemplo, <class 'str'>).
 function tipoDeES(valor) {
-  if (Array.isArray(valor)) return 'lista';
+  if (valor === null || valor === undefined) return "<class 'NoneType'>";
+  if (Array.isArray(valor)) return "<class 'list'>";
   const t = typeof valor;
-  if (t === 'number') return 'número';
-  if (t === 'string') return 'texto';
-  if (t === 'boolean') return 'booleano';
-  if (t === 'function') return 'función';
-  if (t === 'undefined') return 'indefinido';
-  if (valor === null) return 'nulo';
-  return t;
+  if (t === 'number') return Number.isInteger(valor) ? "<class 'int'>" : "<class 'float'>";
+  if (t === 'string') return "<class 'str'>";
+  if (t === 'boolean') return "<class 'bool'>";
+  if (t === 'function') return "<class 'function'>";
+  return "<class '" + t + "'>";
 }
 // input() simulado: en los tests consume la cola de "entradas" del ejercicio;
 // en ejecución normal abre un diálogo del navegador (como escribir en la terminal).

@@ -98,10 +98,10 @@ capitulo:
   - id: variables-ficha-personal
     titulo: Tu ficha personal
     enunciado: 'Crea una variable con tu nombre (texto) y otra con tu edad (número). Después, muestra el TIPO de cada una: primero el de tu nombre y luego el de tu edad.'
-    explicacion: 'Da igual el nombre o la edad exactos que elijas: lo que se comprueba es que el primer "tipo de" mostrado sea texto y el segundo, número.'
+    explicacion: 'Da igual el nombre o la edad exactos que elijas: lo que se comprueba es que el primer "tipo de" mostrado sea <class ''str''> y el segundo, <class ''int''>.'
     resultadoEsperado:
-    - texto
-    - número
+    - "<class 'str'>"
+    - "<class 'int'>"
   - id: suma-de-dos-numeros
     titulo: Suma de dos números
     enunciado: Pide dos números al usuario con pedir, conviértelos a número entero y muestra su suma.
