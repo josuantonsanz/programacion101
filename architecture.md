@@ -87,8 +87,9 @@ Orden de carga en `index.html` (importante, hay dependencias):
 Tres responsabilidades:
 
 1. **Bloques propios del taller**:
-   - `mostrar`, `tipo_de` (salida y tipo de un valor);
-   - `pedir` (entrada de datos, como `input()`), `convertir` (casting
+   - `mostrar`, `tipo_de` (salida y tipo de un valor; generan `print()` y
+     `type()` en Python);
+   - `pedir` (entrada de datos, genera `input()`), `convertir` (casting
      `int`/`float`/`str`);
    - `operacion_extra` (potencia, división entera, resto);
    - `romper`, `continuar`, `no_hacer_nada` (`break`, `continue`, `pass`);
@@ -331,12 +332,13 @@ Los bloques se traducen a **dos** lenguajes:
 | Mostrar al alumno | Python | `Blockly.Python.workspaceToCode` |
 | Ejecutar | JavaScript | `Blockly.JavaScript.workspaceToCode` + `new Function` |
 
-Consecuencia: `mostrar( )` y `tipo de ( )` tienen **doble implementación** —
-generadores Python y JS en `bloques.js`, más `mostrar`/`tipoDeES` reales en
-`app.js`. El Python que ve el alumno es informativo: el que se ejecuta de verdad
-es el JavaScript equivalente. Por eso los nombres de las variables internas son
-idénticos en ambos generadores (el idioma de las variables de Blockly es
-independiente del idioma del código generado).
+Consecuencia: los bloques en español `mostrar( )` y `tipo de ( )` tienen
+**doble implementación**: sus generadores producen respectivamente `print()` y
+`type()` en Python, y `mostrar()` y `tipoDeES()` en JavaScript. Estas últimas se
+implementan en `app.js`. El Python que ve el alumno es informativo: el que se
+ejecuta de verdad es el JavaScript equivalente. Por eso los nombres de las
+variables internas son idénticos en ambos generadores (el idioma de las
+variables de Blockly es independiente del idioma del código generado).
 
 Casos especiales del puente Python ↔ JavaScript:
 

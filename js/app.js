@@ -409,14 +409,17 @@ document.getElementById('btnLimpiar').addEventListener('click', () => {
 // =================================================================
 // 6. PANEL DEL PROFESOR: exportar JSON nativo de Blockly
 // =================================================================
-document.getElementById('btnExportar').addEventListener('click', () => {
-  const estado = Blockly.serialization.workspaces.save(workspace);
-  const caja = document.getElementById('cajaExportar');
-  caja.style.display = 'block';
-  caja.value = JSON.stringify(estado, null, 2);
-  caja.focus();
-  caja.select();
-});
+const btnExportar = document.getElementById('btnExportar');
+if (btnExportar) {
+  btnExportar.addEventListener('click', () => {
+    const estado = Blockly.serialization.workspaces.save(workspace);
+    const caja = document.getElementById('cajaExportar');
+    caja.style.display = 'block';
+    caja.value = JSON.stringify(estado, null, 2);
+    caja.focus();
+    caja.select();
+  });
+}
 
 // =================================================================
 // 7. ARRANQUE

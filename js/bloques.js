@@ -17,7 +17,7 @@ Blockly.Blocks['mostrar'] = {
 };
 Blockly.Python.forBlock['mostrar'] = function(block) {
   var valor = Blockly.Python.valueToCode(block, 'VALOR', Blockly.Python.ORDER_NONE) || 'None';
-  return 'mostrar(' + valor + ')\n';
+  return 'print(' + valor + ')\n';
 };
 Blockly.JavaScript.forBlock['mostrar'] = function(block) {
   var valor = Blockly.JavaScript.valueToCode(block, 'VALOR', Blockly.JavaScript.ORDER_NONE) || "''";
@@ -35,7 +35,7 @@ Blockly.Blocks['tipo_de'] = {
 };
 Blockly.Python.forBlock['tipo_de'] = function(block) {
   var valor = Blockly.Python.valueToCode(block, 'VALOR', Blockly.Python.ORDER_NONE) || 'None';
-  return ['tipo_de(' + valor + ')', Blockly.Python.ORDER_FUNCTION_CALL];
+  return ['type(' + valor + ')', Blockly.Python.ORDER_FUNCTION_CALL];
 };
 Blockly.JavaScript.forBlock['tipo_de'] = function(block) {
   var valor = Blockly.JavaScript.valueToCode(block, 'VALOR', Blockly.JavaScript.ORDER_NONE) || "''";

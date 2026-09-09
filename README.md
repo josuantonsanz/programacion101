@@ -10,9 +10,10 @@ usar IA y sin instalar nada**.
 
 ## Características
 
-- 🧩 **Bloques en español** (variables, texto, números, listas, lógica, bucles,
-  funciones) con bloques propios del taller: `mostrar( )`, `tipo de ( )`,
-  `pedir( )`, bloques de cadenas, listas y funciones.
+- 🧩 **Bloques en español y Python idiomático**: los bloques propios
+  `mostrar( )`, `tipo de ( )` y `pedir( )` generan respectivamente `print()`,
+  `type()` e `input()`; también hay bloques de variables, texto, números,
+  listas, lógica, bucles y funciones.
 - 📚 **Temario por capítulos**: cada capítulo filtra qué bloques están
   disponibles, para no agobiar con opciones.
 - 📘 **Ejemplos montados** que el alumno puede ejecutar y modificar.
